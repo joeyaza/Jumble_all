@@ -1,18 +1,11 @@
-											/*nav-bar*/
-.generator-img {
-	width: 80px;
-	height: 80px;
+                                /*WELCOME PAGE*/
+
+.wlcm-fading-txt {
+    text-align: center;
+    margin-bottom: 400px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.right .material-icons {
-	margin: 0px;
-}
-
-#categories-dropdown {
-	margin: 80px 200px 10px 0px;
-}
-
-																				/*WELCOME PAGE*/
 .cb-slideshow,
 .cb-slideshow:after { 
     position: fixed;
@@ -20,7 +13,7 @@
     height: 100%;
     top: 0px;
     left: 0px;
-    z-index: 0; 
+    z-index: -1;
 }
 .cb-slideshow:after { 
     content: '';
@@ -51,9 +44,9 @@
     color: #fff;
     animation: titleAnimation 36s linear infinite 0s; 
 }
-.cb-slideshow li div h3 { 
-    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-    font-size: 240px;
+.cb-slideshow li div {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 60px;
     padding: 0;
     line-height: 200px; 
 }
@@ -61,33 +54,40 @@
     background-image: url(../images/sports.jpg) 
 }
 .cb-slideshow li:nth-child(2) span { 
-    background-image: url(../images/news.jpg);
-    animation-delay: 4s; 
+    background-image: url(../images/nature.jpg);
+    animation-delay: 6s; 
 }
 .cb-slideshow li:nth-child(3) span { 
     background-image: url(../images/music.jpg);
-    animation-delay: 8s; 
+    animation-delay: 12s; 
 }
 .cb-slideshow li:nth-child(4) span { 
     background-image: url(../images/art.png);
-    animation-delay: 12s; 
+    animation-delay: 18s; 
 }
 .cb-slideshow li:nth-child(5) span { 
     background-image: url(../images/culture.jpg);
-    animation-delay: 16s; 
+    animation-delay: 24s; 
+}
+.cb-slideshow li:nth-child(6) span { 
+    background-image: url(../images/news.jpg);
+    animation-delay: 30s; 
 }
 
 .cb-slideshow li:nth-child(2) div { 
-    animation-delay: 4s; 
+    animation-delay: 6s; 
 }
 .cb-slideshow li:nth-child(3) div { 
-    animation-delay: 8s; 
-}
-.cb-slideshow li:nth-child(4) div { 
     animation-delay: 12s; 
 }
+.cb-slideshow li:nth-child(4) div { 
+    animation-delay: 18s; 
+}
 .cb-slideshow li:nth-child(5) div { 
-    animation-delay: 16s; 
+    animation-delay: 24s; 
+}
+.cb-slideshow li:nth-child(6) div { 
+    animation-delay: 30s; 
 }
 
 @keyframes imageAnimation { 
@@ -107,9 +107,9 @@
 .no-cssanimations .cb-slideshow li span{
 	opacity: 1;
 }
-@media screen and (max-width: 1140px) { 
-    .cb-slideshow li div h3 { font-size: 140px }
+@media screen and (max-width: 1140px) {
+    .cb-slideshow li div h1 { font-size: 60px }
 }
 @media screen and (max-width: 600px) { 
-    .cb-slideshow li div h3 { font-size: 80px }
+    .cb-slideshow li div h1 { font-size: 60px }
 }
