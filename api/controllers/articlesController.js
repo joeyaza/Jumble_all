@@ -1,6 +1,13 @@
 var Article = require('../models/article');
 var request = require('request');
 
+// (function poll(){
+//    setTimeout(function() {
+//     addArticle();
+    
+//   }, 30000);
+// })();
+
 function addArticle(req, res) {
   request("http://content.guardianapis.com/search?order-by=newest&page-size=200&api-key="+process.env.GUARDIAN_API_KEY, function(error, response, body) {
     if (!error && response.statusCode===200) {
