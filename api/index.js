@@ -13,29 +13,55 @@ var express         = require('express'),
 
 var config          = require(path.join(__dirname,'config','config'));
 var secret          = config.secret;
+var User           = require('./models/user');
 
 mongoose.connect(config.database);
 
-require(path.join(__dirname,'config','passport'))(passport);
+// require(path.join(__dirname,'config','passport'))(passport);
+require('./config/passport')(passport);
+
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(methodOverride(function(req, res) {
   if (req.body & typeof req.body === 'object' && '_method' in req.body) {
-    ver method = req.body._method;
+    var method = req.body._method;
     delete req.body._method;
     return method;
   };
 }));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(cookieParser);
+app.use(cookieParser());
 app.use(morgan('dev'));
-app.use(cors);
+app.use(cors());
 app.use(passport.initialize());
 
+// app.use('/api', expressJWT({ secret: secret })
+//   .unless({
+//     path: [
+//       { url: '/api/login', methods: ['POST'] },
+//       { url: '/api/register', methods: ['POST'] }
+//     ]
+//   }));
 
+//app.use('/api', expressJWT({secret: secret}) .unless({ path: [ { url: '/api/login', methods: ['POST'] }, { url: '/api/register', methods: ['POST'] } ] }));
+app.use('/api/users/:id', expressJWT({ secret: secret }));
+app.use('/api/users', expressJWT({ secret: secret }));
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({message: 'Unauthorized request.'});
+  }
+  next();
+});
+
+console.log("hello")
 
 var routes          = require(path.join(__dirname,'config','routes'));
 app.use('/api', routes);
 
+console.log("hello")
 app.listen(process.env.PORT || 3000);
+
