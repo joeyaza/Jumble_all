@@ -4,6 +4,7 @@ var passport = require("passport");
 
 var usersController = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
+var articlesController = require('../controllers/articlesController');
 
 var User = require('../models/user');
 
@@ -18,5 +19,8 @@ router.route('/users/:id')
   .put(usersController.usersUpdate)
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete)
+
+router.route('/articles')
+  .get(articlesController.addArticle);
 
 module.exports = router
