@@ -24,25 +24,69 @@ function register(req, res, next) {
   return localStrategy(req, res, next);
 };
 
+// function register(req, res, next) {
+//   // Add your local-signup strategy here
+//   var signupStrategy = passport.authenticate('local-signup');
+//   //this is defined in config passport. to pass over the password to deal with the
+//   //encryption of it.
+
+//   // return signupStrategy(req, res);
+
+
+//   // Create a new token using JWT - jwt.sign(user, secret, { expiresIn: 60*60*24 });
+
+//   // if(user.authenticate(req.body.email)) {
+//     var info = {
+//       email: req.body.email,
+//       password: req.body.password,
+//     };
+//     var token = jwt.sign(info, secret, { expiresIn: '30m'});
+//   // Once you have signed up a user, return the token to the client with the user as JSON
+//     res.status(200).json({ token: token, user: info});
+//     return signupStrategy(req, res);
+
+
+// }; 
+
+
+// function login(req, res, next) {
+//   User.findOne({
+//     "local.email": req.body.email
+//   }, function(err, user) {
+//     if (err) return res.status(500).json(err);
+//     if (!user) return res.status(403).json({ message: 'No user found.' });
+//     if (!user.validPassword(req.body.password)) return res.status(403).json({ message: 'Authentication failed.' });
+
+//     var token = jwt.sign(user, secret, { expiresIn: 60*60*24 });
+
+//     return res.status(200).json({
+//       success: true,
+//       message: 'Welcome!',
+//       token: token,
+//       user: user
+//     });
+//   });
+// };
 
 function login(req, res, next) {
-  User.findOne({
-    "local.email": req.body.email
-  }, function(err, user) {
-    if (err) return res.status(500).json(err);
-    if (!user) return res.status(403).json({ message: 'No user found.' });
-    if (!user.validPassword(req.body.password)) return res.status(403).json({ message: 'Authentication failed.' });
+  // You need to search your database for a user with a "local.email" as the req.body.email
 
-    var token = jwt.sign(user, secret, { expiresIn: 60*60*24 });
+  User.findOne({ "local.email": req.body.email }, function(err, user) {
+    if(err) res.status(401).json({ message: "access denied"});
+  
+    if(user.validPassword(req.body.password)) {
+      var info = {
+        email: req.body.email,
+        password: req.body.password,
+      };
+      var token = jwt.sign(info, secret, { expiresIn: '30m' });
+    // Once you have signed up a user, return the token to the client with the user as JSON
+      res.status(200).json({ token: token, user: info});
+      // return loginStrategy(req, res);
+    }
 
-    return res.status(200).json({
-      success: true,
-      message: 'Welcome!',
-      token: token,
-      user: user
-    });
-  });
-};
+  }); 
+}
 
 module.exports = {
   login: login,
