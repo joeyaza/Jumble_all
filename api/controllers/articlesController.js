@@ -4,11 +4,18 @@ var request = require('request');
 // (function poll(){
 //    setTimeout(function() {
 //     addArticle();
-    
 //   }, 30000);
 // })();
 
-function addArticle(req, res) {
+function articlesIndex(req, res) {
+  Article.find(function(err, articles) {
+    if (err) return res.status(404).json({message: "Something went wrong"});
+
+    return res.status(200).json({articles: articles});
+  });
+}
+
+function addArticles(req, res) {
   request("http://content.guardianapis.com/search?order-by=newest&page-size=200&api-key="+process.env.GUARDIAN_API_KEY, function(error, response, body) {
     if (!error && response.statusCode===200) {
       JSON.parse(body).response.results.forEach(function(article) {
@@ -33,5 +40,6 @@ function addArticle(req, res) {
 }
 
 module.exports = {
-  addArticle: addArticle
+  articlesIndex: articlesIndex,
+  addArticles: addArticles
 }

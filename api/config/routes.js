@@ -20,7 +20,10 @@ router.route('/users/:id')
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete)
 
+router.route('/newarticles')
+  .get(articlesController.addArticles);
+
 router.route('/articles')
-  .get(articlesController.addArticle);
+  .get(articlesController.articlesIndex);
 
 module.exports = router
