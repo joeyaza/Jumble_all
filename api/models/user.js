@@ -2,13 +2,12 @@ var mongoose = require('mongoose'),
     bcrypt   = require('bcrypt-nodejs');
 
 var userSchema = new mongoose.Schema({
-  fb: {
-    id: String,
-    access_token: String,
-    firstName: String,
-    lastName: String,
-    email: String
-  }
+  local: {
+      username: { type: String },
+      fullname: { type: String },
+      email: { type: String, unique: true, required: true },
+      password: { type: String, required: true }
+    }
 });
 
 userSchema.statics.encrypt = function(password) {

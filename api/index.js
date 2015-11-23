@@ -13,6 +13,7 @@ var express         = require('express'),
 
 var config          = require(path.join(__dirname,'config','config'));
 var secret          = config.secret;
+var User           = require('./models/user');
 
 mongoose.connect(config.database);
 
@@ -20,7 +21,7 @@ require(path.join(__dirname,'config','passport'))(passport);
 
 app.use(methodOverride(function(req, res) {
   if (req.body & typeof req.body === 'object' && '_method' in req.body) {
-    ver method = req.body._method;
+    var method = req.body._method;
     delete req.body._method;
     return method;
   };
@@ -32,6 +33,21 @@ app.use(cookieParser);
 app.use(morgan('dev'));
 app.use(cors);
 app.use(passport.initialize());
+
+app.use('/api', expressJWT({ secret: secret })
+  .unless({
+    path: [
+      { url: '/api/login', methods: ['POST'] },
+      { url: '/api/register', methods: ['POST'] }
+    ]
+  }));
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({message: 'Unauthorized request.'});
+  }
+  next();
+});
 
 
 
