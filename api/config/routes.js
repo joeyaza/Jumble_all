@@ -5,6 +5,7 @@ var passport = require("passport");
 var usersController = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
 var articlesController = require('../controllers/articlesController');
+var imagesController = require('../controllers/imagesController');
 
 var User = require('../models/user');
 
@@ -25,5 +26,11 @@ router.route('/newarticles')
 
 router.route('/articles')
   .get(articlesController.articlesIndex);
+
+router.route('/newimages')
+  .get(imagesController.addImages);
+
+router.route('/images')
+  .get(imagesController.imagesIndex);
 
 module.exports = router

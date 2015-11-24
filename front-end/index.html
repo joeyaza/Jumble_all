@@ -56,7 +56,7 @@
 				</div>
 			</nav>
 		</div> -->
-
+<button id="images">Get images</button>
 		<!-- Welcome Page -->
 		<ul class="cb-slideshow">
 			<li>
@@ -103,6 +103,19 @@
 		</ul>
 
 	</header>
-
+<script type="text/javascript">
+  $('#images').on('click', function() {
+    $.ajax({
+      method: "GET",
+      url: "http://localhost:3000/api/newimages"
+    })
+    .done(function() {
+      console.log("done")
+    })
+    .fail(function() {
+      console.log("failed")
+    })
+  })
+</script>
 </body>
 </html>
