@@ -1,8 +1,6 @@
 var Image = require('../models/image');
 var request = require('request-promise');
 var Promise = require('bluebird');
-var RateLimiter = require('limiter').RateLimiter;
-var limiter = new RateLimiter(1,250);
 
 // (function poll(){
 //    setTimeout(function() {
@@ -18,36 +16,6 @@ function imagesIndex(req, res) {
   });
 }
 
-/*
-
-var request = require('request-promise');
-var Promise = require('bluebird');
-
-request({ url: "", json: true })
-  .then(function(err, res, body) {
-    promises = body.response.results.map(function() {
-      request({ url: "", headers: "", json: true })
-    });
-
-    return Promise.all(promises);
-  })
-  .then(fuction(gettyImageArray) {
-    promises = gettyImagesArray.map(function(images) {
-      var newImage = new Image();
-
-      return newImage.save();
-    });
-
-    return Promises.all(promises);
-  })
-  .then(function(savedImages) {
-    // all saved
-    res.send(200).json({ images: savedImages });
-  })
-  .catch(function(err) {
-    res.send(500);
-  })
-*/
 function getGettyImages(categories) {
   var gettyImagesArray = [];
   var i = 0;
