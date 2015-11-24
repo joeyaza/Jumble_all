@@ -4,11 +4,19 @@ h1 {
     font-size: 160px;
     text-shadow: 5px 5px #282828;
     text-align: center;
-    margin-top: -332px;
+    margin-top: -190px;
+
     
 }
 
 /*body{
     background-color: #06DCFB;
 }*/
+
+.section{
+    font-size: 10px;
+    text-align: center;
+    
+}
+
 

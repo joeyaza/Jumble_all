@@ -51,6 +51,8 @@ function displayErrors(data){
 function loggedInState(){
   $("section, .logged-out").hide();
   $("#users, .logged-in").show();
+  $("#fullpage").hide();
+  $("#newsfeed").show();
 
 }
 
