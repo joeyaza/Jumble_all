@@ -6,6 +6,7 @@ var usersController = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
 var articlesController = require('../controllers/articlesController');
 var imagesController = require('../controllers/imagesController');
+var videosController = require('../controllers/videosController');
 
 var User = require('../models/user');
 
@@ -32,5 +33,11 @@ router.route('/newimages')
 
 router.route('/images')
   .get(imagesController.imagesIndex);
+
+router.route('/newvideos')
+  .post(videosController.addVideos);
+
+router.route('/videos')
+  .get(videosController.videosIndex);
 
 module.exports = router
