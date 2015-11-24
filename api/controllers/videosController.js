@@ -1,5 +1,6 @@
 var Video = require('../models/video');
-var request = require('request');
+var request = require('request-promise');
+var Promise = require('bluebird');
 
 // (function poll(){
 //    setTimeout(function() {
@@ -15,36 +16,69 @@ function videosIndex(req, res) {
   });
 }
 
-function addVideos(req, res) {
-  var options = {
-    url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=politics&key=' + process.env.YOUTUBE_API_KEY
-  };
+function getYoutubeVideos(categories) {
+  var youtubeVidsArray = [];
+  var i = 0;
 
-  function callback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      JSON.parse(body).items.forEach(function(vid){
-        var info = JSON.parse(body);
-        console.log(info);
-        Video.findOne({"videoId":vid.id.videoId}, function(err, oldVideo){
-          console.log(oldVideo);
-          if (err) return res.status(500).json({message: "Something went wrong"});
+  return new Promise(function(resolve, reject) {
 
-          if (oldVideo) return false;
+    function makeRequest() {
+      var title = categories[i].webTitle.replace('&', 'and');
 
-          var newVideo = new Video();
-          newVideo.title = vid.snippet.title;
-          newVideo.video_id = vid.id.videoId;
-          newVideo.category = "politics";
-          newVideo.published_at = vid.snippet.publishedAt;
+      var options = {
+        url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" +title+"&key="+process.env.YOUTUBE_API_KEY,
+        json: true
+      };
 
-          newVideo.save(function(err, video){
-            if (err) return res.status(500).json({message: "Something went wrong"});
-          });
-        });
+      return request(options, function(err, res, body){
+        if(err) reject(err);
+
+        youtubeVidsArray = youtubeVidsArray.concat(body.items.map(function(video) {
+          video.category = categories[i].webTitle;
+
+          return video;
+        }));
+
+        i++;
+
+        if(i < categories.length) {
+          console.log("working..", i);
+          return makeRequest();
+        }
+
+        return resolve(youtubeVidsArray);
+
       });
     };
-  };
-  request(options, callback);
+
+    makeRequest();
+  });
+}
+
+
+function addVideos(req, res) {
+  console.log("addVideos");
+
+  return request({ url: "http://content.guardianapis.com/sections?api-key="+process.env.GUARDIAN_API_KEY, json: true })
+    .then(function(body){
+      return getYoutubeVideos(body.response.results);
+    })
+    .then(function(videos){
+      return Promise.all(videos.map(function(video) {
+        var newVideo = new Video();
+        newVideo.title = video.snippet.title;
+        newVideo.video_url = video.id.videoId;
+        newVideo.category = video.category;
+        newVideo.published_at = video.snippet.publishedAt;
+        return newVideo.save();
+      }));
+    })
+    .then(function(savedVideos) {
+      res.status(200).json({ message: "Video Saved" });
+    })
+    .catch(function(err) {
+      res.status(500).json({ message: err });
+    });
 }
 
 module.exports = {
