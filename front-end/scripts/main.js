@@ -1,7 +1,6 @@
 $( init);
 
 function init(){
-  $(".dropdown-button").dropdown();
   $("form").on("submit", submitForm);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);

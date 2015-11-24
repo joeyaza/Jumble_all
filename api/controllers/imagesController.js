@@ -27,7 +27,7 @@ function addImages(req, res) {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
       info.images.forEach(function(pic) {
-        Image.findOne({"title":})
+        // Image.findOne({"title":})
       })
     }
   }
