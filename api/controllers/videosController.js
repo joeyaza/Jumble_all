@@ -22,10 +22,28 @@ function addVideos(req, res) {
 
   function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
-      var info = JSON.parse(body);
-      console.log(info);
-    }
-  }
+      JSON.parse(body).items.forEach(function(vid){
+        var info = JSON.parse(body);
+        console.log(info);
+        Video.findOne({"videoId":vid.id.videoId}, function(err, oldVideo){
+          console.log(oldVideo);
+          if (err) return res.status(500).json({message: "Something went wrong"});
+
+          if (oldVideo) return false;
+
+          var newVideo = new Video();
+          newVideo.title = vid.snippet.title;
+          newVideo.video_id = vid.id.videoId;
+          newVideo.category = "politics";
+          newVideo.published_at = vid.snippet.publishedAt;
+
+          newVideo.save(function(err, video){
+            if (err) return res.status(500).json({message: "Something went wrong"});
+          });
+        });
+      });
+    };
+  };
   request(options, callback);
 }
 
