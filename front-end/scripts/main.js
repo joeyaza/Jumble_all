@@ -24,12 +24,13 @@ function showPage() {
   return $("#" + linkClass).show();
 }
 
-function submitForm(){
+function submitForm(event){
   event.preventDefault();
 
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
+  this.reset();
 
   return ajaxRequest(method, url, data, authenticationSuccessful);
 }
@@ -53,7 +54,6 @@ function loggedInState(){
   $("#users, .logged-in").show();
   $("#fullpage").hide();
   $("#newsfeed").show();
-
 }
 
 function loggedOutState(){

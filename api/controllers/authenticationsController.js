@@ -72,19 +72,19 @@ function login(req, res, next) {
   // You need to search your database for a user with a "local.email" as the req.body.email
 
   User.findOne({ "local.email": req.body.email }, function(err, user) {
-    if(err) res.status(401).json({ message: "access denied"});
+    if(err) return res.status(500).json({ message: "access denied"});
+    if(!user) return res.status(403).json({message: "no user found"});
   
-    if(user.validPassword(req.body.password)) {
-      var info = {
-        email: req.body.email,
-        password: req.body.password,
-      };
-      var token = jwt.sign(info, secret, { expiresIn: '30m' });
-    // Once you have signed up a user, return the token to the client with the user as JSON
-      res.status(200).json({ token: token, user: info});
-      // return loginStrategy(req, res);
-    }
+    if(!user.validPassword(req.body.password)) return res.status(403).json({message:"authentication failed"});
 
+
+    var info = {
+      email: req.body.email,
+    };
+    var token = jwt.sign(info, secret, { expiresIn: 60*60*24 });
+    // Once you have signed up a user, return the token to the client with the user as JSON
+      return res.status(200).json({ success: true, message: "Welcome!", token: token, user: user});
+      // return loginStrategy(req, res);
   }); 
 }
 
