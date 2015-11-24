@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+
 	<meta charset="utf-8">
 	<title>JumbulIt</title>
 
@@ -37,149 +40,117 @@
 
 <body>
 
-<!-- Fullpage scroll-down pages -->
+	<!-- Fullpage scroll-down pages -->
 	<div id="fullpage">
 		<div class="section">
 			<div class="slide" data-anchor="slide1">
 
-<!-- Codrops Slider on Page 1-->
-			<ul class="cb-slideshow" class="slide">
-				<li>
-					<span>Sports</span>
-					<div class="wlcm-altering-div">
-						<h1 class="wlcm-altering-txt">Sports</h1>
-					</div>
-				</li>
+				<!-- Codrops Slider on Page 1-->
+				<ul class="cb-slideshow" class="slide">
+					<li>
+						<span>Sports</span>
+						<div class="wlcm-altering-div">
+							<h1 class="wlcm-altering-txt">Sports</h1>
+						</div>
+					</li>
 
-				<li>
-					<span>Nature</span>
-					<div class="wlcm-altering-div">
-						<h1 class="wlcm-altering-txt">Nature</h1>
-					</div>
-				</li>
+					<li>
+						<span>Nature</span>
+						<div class="wlcm-altering-div">
+							<h1 class="wlcm-altering-txt">Nature</h1>
+						</div>
+					</li>
 
-				<li>
-					<span>Music</span>
-					<div class="wlcm-altering-div">
-						<h1 class="wlcm-altering-txt">Music</h1>
-					</div>
-				</li>
+					<li>
+						<span>Music</span>
+						<div class="wlcm-altering-div">
+							<h1 class="wlcm-altering-txt">Music</h1>
+						</div>
+					</li>
 
-				<li>
-					<span>Art</span>
-					<div class="wlcm-altering-div">
-						<h1 class="wlcm-altering-txt">Art</h1>
-					</div>
-				</li>
+					<li>
+						<span>Art</span>
+						<div class="wlcm-altering-div">
+							<h1 class="wlcm-altering-txt">Art</h1>
+						</div>
+					</li>
 
-				<li>
-					<span>Culture</span>
-					<div class="wlcm-altering-div">
-						<h1 class="wlcm-altering-txt">Culture</h1>
-					</div>
-				</li>
+					<li>
+						<span>Culture</span>
+						<div class="wlcm-altering-div">
+							<h1 class="wlcm-altering-txt">Culture</h1>
+						</div>
+					</li>
 
-				<li>
-					<span>News</span>
-					<div class="wlcm-altering-div">
-						<h1 class="wlcm-altering-txt">News</h1>
-					</div>
-				</li>
-			</ul>
+					<li>
+						<span>News</span>
+						<div class="wlcm-altering-div">
+							<h1 class="wlcm-altering-txt">News</h1>
+						</div>
+					</li>
+				</ul>
+			</div>
+
 		</div>
 
+
+
+		<div class="section">
+			<div class= "container">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/" class="register-link logged-out">Register</a></li>
+					<li><a href="/" class="login-link logged-out">Login</a></li>
+					<li><a href="/" class="logout-link logged-in">Logout</a></li>
+				</ul>
+
+				<section id="register">
+					<h2>Register</h2>
+					<form class="register" method="post" action="/register">
+						<div class="form-group">
+						<input type="text" name="username" id="register-username" class="form-control" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<input type="text" name="fullname" id="register-fullname" class="form-control" placeholder="Full name">
+						</div>
+						<div class="form-group">
+							<input type="text" name="image" id="register-image" class="form-control" placeholder="Image URL">
+						</div>
+						<div class="form-group">
+							<input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" id="register-password" class="form-control" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</section>
+
+				<section id="login">
+					<h2>Login</h2>
+					<form class="login" method="post" action="/login">
+						<div class="form-group">
+							<input type="email" name="email" id="login-email" class="form-control" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" id="login-password" class="form-control"  placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</section>
+			</div>
+
+		</div>
+
+
+		<div class="section">
+			<div class="slide" data-anchor="slide2">
+				<button id="images">Get images</button>
+			</div>
+		</div>
+
+		<div class="section">Site Map</div>
+		<div class="section">Find us on Social Media</div>
 	</div>
-	
-
-	<div class="section">About us</div>
-	<div class="section">Site Map</div>
-	<div class="section">Find us on Social Media</div>
-</div>
-
-			<nav>
-				<div class="nav-wrapper">
-
-					<a href="" class="brand-logo center">
-						<img src="./images/generator.png" class="generator-img">
-					</a>
-
-					<ul class=" hide-on-med-and-down">
-						<li class="nav-text"><a href="">News Feed</a></li>
-						<li class="nav-text"><a href="">Components</a></li>
-						<li class="nav-text"><a class="dropdown-button" href="#!" data-activates="categories-dropdown">
-							Categories
-						</a></li>
-					</ul>
-
-				</div>
-			</nav>
-		</div>
-<button id="images">Get images</button>
-
-		<div class= "container">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/" class="register-link logged-out">Register</a></li>
-				<li><a href="/" class="login-link logged-out">Login</a></li>
-				<li><a href="/" class="logout-link logged-in">Logout</a></li>
-			</ul>
-
-		<section id="register">
-		      <h2>Register</h2>
-		      <form class="register" method="post" action="/register">
-		        <div class="form-group">
-		          <label for="register-username">Username</label>
-		          <input type="text" name="username" id="register-username" class="form-control" placeholder="Username">
-		        </div>
-		        <div class="form-group">
-		          <label for="register-fullname">Full name</label>
-		          <input type="text" name="fullname" id="register-fullname" class="form-control" placeholder="Full name">
-		        </div>
-		        <div class="form-group">
-		          <label for="register-image">image</label>
-		          <input type="text" name="image" id="register-image" class="form-control" placeholder="Image URL">
-		        </div>
-		        <div class="form-group">
-		          <label for="register-email">Email address</label>
-		          <input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
-		        </div>
-		        <div class="form-group">
-		          <label for="register-password">Password</label>
-		          <input type="password" name="password" id="register-password" class="form-control" placeholder="Password">
-		        </div>
-		        <button type="submit" class="btn btn-default">Submit</button>
-		      </form>
-		    </section>
-
-		    <section id="login">
-		          <h2>Login</h2>
-		          <form class="login" method="post" action="/login">
-		            <div class="form-group">
-		              <label for="login-email">Email address</label>
-		              <input type="email" name="email" id="login-email" class="form-control" placeholder="Email">
-		            </div>
-		            <div class="form-group">
-		              <label for="login-password">Password</label>
-		              <input type="password" name="password" id="login-password" class="form-control"  placeholder="Password">
-		            </div>
-		            <button type="submit" class="btn btn-default">Submit</button>
-		          </form>
-		        </section>
-		    </div>
-
-        <script type="text/javascript">
-          $('#images').on('click', function() {
-            $.ajax({
-              method: "GET",
-              url: "http://localhost:3000/api/newimages"
-            })
-            .done(function() {
-              console.log("done")
-            })
-            .fail(function() {
-              console.log("failed")
-            })
-          })
-        </script>
 
 </body>
 </html>
