@@ -17,7 +17,7 @@ function imagesIndex(req, res) {
 
 function addImages(req, res) {
   var options = {
-    url: 'https://api.gettyimages.com:443/v3/search/images?embed_content_only=true&fields=date_created%2Cthumb%2Ctitle&page_size=20&phrase=soccer&sort_order=best_match',
+    url: 'https://api.gettyimages.com:443/v3/search/images?embed_content_only=true&fields=date_created%2Cthumb%2Ctitle&page_size=20&phrase=soccer&sort_order=newest',
     headers: {
       'Api-Key': process.env.GETTY_IMAGES_API_KEY
     }
@@ -26,11 +26,26 @@ function addImages(req, res) {
   function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
+      console.info(info);
       info.images.forEach(function(pic) {
-        Image.findOne({"title":})
-      })
-    }
-  }
+        Image.findOne({"title":pic.title}, function(err, oldImage) {
+          if (err) return res.status(500).json({message: "Something went wrong"});
+
+          if (oldImage) return false;
+
+          var newImage = new Image();
+          newImage.title = pic.title;
+          newImage.image_url = pic.display_sizes.uri;
+          newImage.category = "football";
+          newImage.created_at = pic.date_created;
+
+          newImage.save(function(err, article) {
+            if (err) return res.status(500).json({message: "Something went wrong"});
+          });
+        });
+      });
+    };
+  };
   request(options, callback);
 }
 
