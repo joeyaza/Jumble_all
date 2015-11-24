@@ -13,7 +13,7 @@ var express         = require('express'),
 
 var config          = require(path.join(__dirname,'config','config'));
 var secret          = config.secret;
-var User           = require('./models/user');
+var User            = require('./models/user');
 
 mongoose.connect(config.database);
 
