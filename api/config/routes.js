@@ -22,13 +22,13 @@ router.route('/users/:id')
   .delete(usersController.usersDelete)
 
 router.route('/newarticles')
-  .get(articlesController.addArticles);
+  .post(articlesController.addArticles);
 
 router.route('/articles')
   .get(articlesController.articlesIndex);
 
 router.route('/newimages')
-  .get(imagesController.addImages);
+  .post(imagesController.addImages);
 
 router.route('/images')
   .get(imagesController.imagesIndex);
