@@ -65,6 +65,7 @@ function loggedInState(){
 function loggedOutState(){
   $("section, .logged-in").hide();
   $("#register, .logged-out").show();
+  $("#fullpage").show();
 }
 
 function titles() {
@@ -77,12 +78,31 @@ function getTitles() {
 }
 
 function showTitles(data) {
-  console.log(data)
-  return $.each(data.articles, function(index, article){
-    $('.articles').append('<p>' + article.title + article.article_url + '<p>');
+  // console.log(data)
+  // return $.each(data.articles, function(index, article){
+  //   $('.articles').append('<p>' + article.title + '<p>');
+
+
+    _(data.articles).each(function(article){
+      var underscoreTemplate = _.template($("#list-template").html());
+      var compiledTemplate = underscoreTemplate(article);
+      $("#my-list").append(compiledTemplate);
+      $('.materialboxed').materialbox();
+
 
   });
 }
+
+//   _(articles).each(function(data){
+//     var underscoreTemplate = _.template($("#list-template").html());
+//     var compiledTemplate = underscoreTemplate(data);
+//     $("#my-list").append(compiledTemplate);
+//   })
+// })
+
+
+
+
 
 function authenticationSuccessful(data) {
   if (data.token) setToken(data.token);

@@ -42,3 +42,8 @@ h1 {
 @media screen and (max-width: 600px) { 
     .cb-slideshow li div h1 { font-size: 60px }
 }
+
+/*.card {
+    height: 500px;
+    width: 500px;
+}*/

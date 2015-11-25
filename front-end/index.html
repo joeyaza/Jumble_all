@@ -10,10 +10,20 @@
 	<title>JumbulIt</title>
 
 	<!-- Fullpage -->
+
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.5/jquery.fullPage.css" />
 
 	<!-- JQuery Library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- underscore -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+	<!-- Compiled and minified CSS -->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+
+	 <!-- Compiled and minified JavaScript -->
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 
 	<!-- Fullpage(2) -->
 	<link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
@@ -95,9 +105,45 @@
 	<!-- 		    	**************HOMEPAGE************************ -->
 
 	<section id="newsfeed">
-	<ul class="articles">
 
-	</ul>
+	<script type="text/x-template" id="list-template">
+	 
+
+		     <div class="col s1 m3">
+		       <div class="card">
+		         <div class="card-image">
+		           <img class="materialboxed" src="./images/culture.jpg">
+		           <span class="card-title"></span>
+		         </div>
+		         <div class="card-content">
+		           <p class="articles"> <%= title%> </p>
+		         </div>
+		         <div class="card-action">
+		           <a target="_blank" href="<%= article_url %>">This is a link</a>
+		         </div>
+		       </div>
+		     </div>
+	</script>
+
+	<div class="row">
+		<ul id="my-list"></ul>
+	</div>
+
+	<!-- <div class="row">
+	        <div class="col s12 m6">
+	          <div class="card blue-grey darken-1">
+	            <div class="card-content white-text">
+	              <span class="card-title">Card Title</span>
+	              <p>I am a very simple card. I am good at containing small bits of information.
+	              I am convenient because I require little markup to use effectively.</p>
+	            </div>
+	            <div class="card-action">
+	              <a href="#">This is a link</a>
+	              <a href="#">This is a link</a>
+	            </div>
+	          </div>
+	        </div>
+	      </div> -->
 	</section>
 	
 		
