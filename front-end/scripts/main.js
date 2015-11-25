@@ -7,6 +7,7 @@ function init(){
     anchors: ['landingPage', 'about', 'madeBy']
   });
   $("form").on("submit", submitForm);
+  $("profile").on("click", getProfile);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   $('.modal-trigger').leanModal();
@@ -105,6 +106,14 @@ function ajaxRequest(method, url, data, callback) {
   });
 }
 
+function getProfile(){
+  event.preventDefault();
+  return ajaxRequest("get", "http://localhost:3000/api/users/:" + user_id, data, callback)
+}
+
+function hideProfile(){
+  event.preventDefault();
+}
 
 
 // $(init);
