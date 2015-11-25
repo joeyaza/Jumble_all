@@ -32,6 +32,9 @@ module.exports = function(passport) {
       newUser.local.username = req.body.username;
       newUser.local.fullname = req.body.fullname;
       newUser.local.password = User.encrypt(password);
+      newUser.local.picture_url = req.body.picture_url;
+      newUser.local.favourite_categories = req.body.favourite_categories;
+      newUser.local.favourite_jumbuls = req.body.favourite_jumbuls;
 
       newUser.save(function(err, user) {
         // Error found

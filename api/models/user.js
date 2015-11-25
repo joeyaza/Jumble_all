@@ -6,8 +6,11 @@ var userSchema = new mongoose.Schema({
       username: { type: String },
       fullName: { type: String },
       email: { type: String, unique: true, required: true },
-      password: { type: String, required: true }
-    }
+      password: { type: String, required: true },
+      picture_url: String
+    },
+    favourite_categories: [],
+    favourite_jumbuls: [{type: mongoose.Schema.Types.ObjectId, ref: 'Article'}, {type: mongoose.Schema.Types.ObjectId, ref: 'Video'}, {type: mongoose.Schema.Types.ObjectId, ref: 'Image'}]
 });
 
 userSchema.statics.encrypt = function(password) {
