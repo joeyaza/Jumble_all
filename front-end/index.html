@@ -19,15 +19,8 @@
 	<link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.5/vendors/jquery.easings.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.5/jquery.fullPage.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#fullpage').fullpage({
-				sectionsColor: ['#A5D8FF', '#758ECD', '#D5C6E0', '#C5979D', '#C5979D'],
-			});
-		});
-	</script>
-
+	
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
 	<!-- Compiled and minified JavaScript -->
@@ -46,59 +39,62 @@
 
 <body>
 
+	<div id="navbar">
+		<nav>
+		  <div class="nav-wrapper">
+		  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+		    <a href="#" class="brand-logo center">
+		    	<img src="/images/logo.png" class="logo-image">
+		    </a>
+		    <ul id="nav-mobile" class="left hide-on-med-and-down">
+		      <li><a href="#landingPage">Home</a></li>
+		      <li><a href="#about">About</a></li>
+		      <li><a href="#madeBy">Made By</a></li>
+		    </ul>
+		    <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      <li><a href="/">Jumbles</a></li>
+		      <li><a href="/" class="profile-link logged-in">Profile</a></li>
+		      <li><a href="#registerModal" class="register-link logged-out modal-trigger">Sign up</a></li>
+		      <li><a href="#loginModal" class="login-link logged-out modal-trigger">Log In</a></li>
+		      <li><a href="/" class="logout-link logged-in">Log Out</a></li>
+		    </ul>
+		  </div>
+		</nav>
+	</div>
+
 	<!-- 		    	****************** WELCOME PAGE ******************** -->
 
-	<div id="fullpage">
-		<div class="section">
-			<h1>Jumble</h1>
-
-			<div class= "container">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/" class="register-link logged-out">Register</a></li>
-					<li><a href="/" class="login-link logged-out">Login</a></li>
-					<li><a href="/" class="logout-link logged-in">Logout</a></li>
-				</ul>
-				
-				<section id="register">
-					<h2>Register</h2>
-					<form class="register" method="post" action="/register">
-						<div class="form-group">
-							<input type="text" name="username" id="register-username" class="form-control" placeholder="Username">
-						</div>
-						<div class="form-group">
-							<input type="text" name="fullname" id="register-fullname" class="form-control" placeholder="Full name">
-						</div>
-						<div class="form-group">
-							<input type="text" name="image" id="register-image" class="form-control" placeholder="Image URL">
-						</div>
-						<div class="form-group">
-							<input type="email" name="email" id="register-email" class="form-control" placeholder="Email">
-						</div>
-						<div class="form-group">
-							<input type="password" name="password" id="register-password" class="form-control" placeholder="Password">
-						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
-				</section>
-
-				<section id="login">
-					<h2>Login</h2>
-					<form class="login" method="post" action="/login">
-						<div class="form-group">
-							<label for="login-email">Email address</label>
-							<input type="email" name="email" id="login-email" class="form-control" placeholder="Email">
-						</div>
-						<div class="form-group">
-							<label for="login-password">Password</label>
-							<input type="password" name="password" id="login-password" class="form-control"  placeholder="Password">
-						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
-				</section>
-			</div>
+	<!-- Registration -->
+	<div class="modal" id="registerModal">
+		<div class="modal-content">
+			<h4>Register</h4>
+			<form class="register col s12" method="post" action="/register">
+				<div class="row">
+						<input type="text" name="username" class="validate" placeholder="Username">
+						<input type="text" name="fullname" class="validate" placeholder="Full name">
+						<input type="text" name="image" class="validate" placeholder="Image URL">
+						<input type="email" name="email" class="validate" placeholder="Email">
+						<input type="password" name="password" class="validate" placeholder="Password">
+				</div>
+				<button type="submit" class="btn waves-effect">Submit<i class="material-icons right">send</i></button>
+			</form>
 		</div>
+	</div>
 
+	<!-- Login -->
+	<div class="modal" id="loginModal">
+		<div class="modal-content">
+			<h4>Login</h4>
+			<form class="login" method="post" action="/login">
+				<input type="email" name="email" id="login-email" class="form-control" placeholder="Email">
+				<input type="password" name="password" id="login-password" class="form-control"  placeholder="Password">
+				<button type="submit" class="btn waves-effect">Submit<i class="material-icons right">send</i></button>
+			</form>
+		</div>
+	</div>
 
+	<div id="fullpage">
+		<div class="section"></div>
 		<div class="section"></div>
 		<div class="section"></div>
 		<div class="section"></div>

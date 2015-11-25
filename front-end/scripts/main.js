@@ -1,9 +1,16 @@
 $( init);
 
 function init(){
+  $('#fullpage').fullpage({
+    sectionsColor: ['#A5D8FF', '#758ECD', '#D5C6E0', '#C5979D', '#C5979D'],
+    fixedElements: '#navbar',
+    anchors: ['landingPage', 'about', 'madeBy']
+  });
   $("form").on("submit", submitForm);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
+  $('.modal-trigger').leanModal();
+  $(".button-collapse").sideNav();
   hideErrors();
   checkLoginState();
 }
@@ -52,6 +59,7 @@ function displayErrors(data){
 function loggedInState(){
   $("section, .logged-out").hide();
   $("#users, .logged-in").show();
+  $.fn.fullpage.destroy();
   $("#fullpage").hide();
   $("#newsfeed").show();
 }
@@ -59,6 +67,7 @@ function loggedInState(){
 function loggedOutState(){
   $("section, .logged-in").hide();
   $("#register, .logged-out").show();
+  $("fullpage").show();
 }
 
 function authenticationSuccessful(data) {

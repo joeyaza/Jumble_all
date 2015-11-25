@@ -1,44 +1,33 @@
 h1 {
-    font-family: hanging letters;
-    color: #FAFAFA;
-    font-size: 160px;
-    text-shadow: 5px 5px #282828;
-    text-align: center;
-    margin-top: -190px;
-
-    
+  font-family: hanging letters;
+  color: #FAFAFA;
+  font-size: 160px;
+  text-shadow: 5px 5px #282828;
+  text-align: center;
 }
-
-/*body{
-    background-color: #06DCFB;
-}*/
 
 .section{
-    font-size: 10px;
-    text-align: center;
-    
+  font-size: 10px;
+  text-align: center;
+}
+.fullpage {
+  width: 100%;
+  height: 100%;
 }
 
-@keyframes imageAnimation { 
-    0% { opacity: 0; animation-timing-function: ease-in; }
-    8% { opacity: 1; animation-timing-function: ease-out; }
-    17% { opacity: 1 }
-    25% { opacity: 0 }
-    100% { opacity: 0 }
+nav .nav-wrapper {
+  height: 95px;
 }
-@keyframes titleAnimation { 
-    0% { opacity: 0 }
-    8% { opacity: 1 }
-    17% { opacity: 1 }
-    19% { opacity: 0 }
-    100% { opacity: 0 }
+#navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
-.no-cssanimations .cb-slideshow li span{
-    opacity: 1;
+
+nav {
+  background-color: transparent;
+  box-shadow: none;
 }
-@media screen and (max-width: 1140px) {
-    .cb-slideshow li div h1 { font-size: 60px }
-}
-@media screen and (max-width: 600px) { 
-    .cb-slideshow li div h1 { font-size: 60px }
+.logo-image {
+  height: 95px;
 }
