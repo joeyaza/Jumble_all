@@ -44,24 +44,24 @@
 
 	<div id="navbar">
 		<nav>
-		  <div class="nav-wrapper">
-		  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-		    <a href="#" class="brand-logo center">
-		    	<img src="/images/logo.png" class="logo-image">
-		    </a>
-		    <ul id="nav-mobile" class="left hide-on-med-and-down">
-		      <li><a href="#landingPage" class="logged-out">Home</a></li>
-		      <li><a href="#about" class="logged-out">About</a></li>
-		      <li><a href="#madeBy" class="logged-out">Made By</a></li>
-		    </ul>
-		    <ul id="nav-mobile" class="right hide-on-med-and-down">
-		      <li><a href="/">Jumbles</a></li>
-		      <li><a href="/" class="profile-link logged-in">Profile</a></li>
-		      <li><a href="#registerModal" class="register-link logged-out modal-trigger">Sign up</a></li>
-		      <li><a href="#loginModal" class="login-link logged-out modal-trigger">Log In</a></li>
-		      <li><a href="/" class="logout-link logged-in">Log Out</a></li>
-		    </ul>
-		  </div>
+			<div class="nav-wrapper">
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<a href="#" class="brand-logo center">
+					<img src="/images/logo.png" class="logo-image">
+				</a>
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+					<li><a href="#landingPage" class="logged-out">Home</a></li>
+					<li><a href="#about" class="logged-out">About</a></li>
+					<li><a href="#madeBy" class="logged-out">Made By</a></li>
+				</ul>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/">Jumbles</a></li>
+					<li><a href="/" class="profile-link logged-in">Profile</a></li>
+					<li><a href="#registerModal" class="register-link logged-out modal-trigger">Sign up</a></li>
+					<li><a href="#loginModal" class="login-link logged-out modal-trigger">Log In</a></li>
+					<li><a href="/" class="logout-link logged-in">Log Out</a></li>
+				</ul>
+			</div>
 		</nav>
 	</div>
 
@@ -73,11 +73,11 @@
 			<h4>Register</h4>
 			<form class="register col s12" method="post" action="/register">
 				<div class="row">
-						<input type="text" name="username" class="validate" placeholder="Username">
-						<input type="text" name="fullname" class="validate" placeholder="Full name">
-						<input type="text" name="image" class="validate" placeholder="Image URL">
-						<input type="email" name="email" class="validate" placeholder="Email">
-						<input type="password" name="password" class="validate" placeholder="Password">
+					<input type="text" name="username" class="validate" placeholder="Username">
+					<input type="text" name="fullname" class="validate" placeholder="Full name">
+					<input type="text" name="image" class="validate" placeholder="Image URL">
+					<input type="email" name="email" class="validate" placeholder="Email">
+					<input type="password" name="password" class="validate" placeholder="Password">
 				</div>
 				<button type="submit" class="btn waves-effect modal-action modal-close">Submit<i class="material-icons right">send</i></button>
 			</form>
@@ -97,53 +97,63 @@
 	</div>
 
 	<div id="fullpage">
-		<div class="section"></div>
-		<div class="section"></div>
-		<div class="section"></div>
-		<div class="section"></div>
+		<div class="section">
+
+		</div>
 	</div>
+			<!-- 		    	**************HOMEPAGE************************ -->
 
-		<!-- 		    	**************HOMEPAGE************************ -->
+
+			<section id="newsfeed">
+
+				<script type="text/x-template" id="list-template">
 
 
-	<section id="newsfeed">
+					<div class="col s1 m3">
+						<div class="card">
+							<div class="card-image">
+								<img class="materialboxed" src="./images/culture.jpg">
+								<span class="card-title"></span>
+							</div>
+							<div class="card-content">
+								<p class="articles"> <%= title%> </p>
+							</div>
+							<div class="card-action">
+								<a target="_blank" href="<%= article_url %>">This is a link</a>
+							</div>
+						</div>
+					</div>
+				</script>
 
-	<script type="text/x-template" id="list-template">
-	 
-
-		     <div class="col s1 m3">
-		       <div class="card">
-		         <div class="card-image">
-		           <img class="materialboxed" src="./images/culture.jpg">
-		           <span class="card-title"></span>
-		         </div>
-		         <div class="card-content">
-		           <p class="articles"> <%= title%> </p>
-		         </div>
-		         <div class="card-action">
-		           <a target="_blank" href="<%= article_url %>">This is a link</a>
-		         </div>
-		       </div>
-		     </div>
-	</script>
-
-	<div class="row">
-		<ul id="my-list"></ul>
-	</div>
-
-	</section>		
-
-		<!-- 		    	**************PROFILEPAGE************************ -->
-
-	<section id="profileSection">
-		<!--<script type="text/x-template" id="profile-template">-->
-			<div class="row">
-				<div class="col-s1-m3">
-					
+				<div class="row">
+					<ul id="my-list"></ul>
 				</div>
-			</div>
-		<!--</script>-->
-	</section>
 
+			</section>		
+
+			<!-- 		    	**************PROFILEPAGE************************ -->
+
+		    	<section id="profileSection">
+		    		<script type="text/x-template" id="profile-template">
+		    		    <div class="row">
+		    		    	<div class="col s12 m6">
+		    		    		<p> <%= user.local.username %></p>
+		    		    	</div>
+		    		    	
+		    		    	<div class="col s12 m6">
+        
+		    		    	</div>
+		    		    </div>
+		    		</script>
+
+		    		<div class="row">
+		    			<ul id="my-info">
+		    			</ul>
+		    		</div>
+
+		    	</section>
+    
+
+		
 </body>
 </html>

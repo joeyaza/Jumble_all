@@ -63,6 +63,7 @@ function loggedInState(){
   $.fn.fullpage.destroy();
   $("#fullpage").hide();
   $("#newsfeed").show();
+  $("#profileSection").show();
   titles();
 }
 
@@ -86,7 +87,7 @@ function showTitles(data) {
   _(data.articles).each(function(article){
     var underscoreTemplate = _.template($("#list-template").html());
     var compiledTemplate = underscoreTemplate(article);
-    $("#my-list").append(compiledTemplate);
+    $("#my-info").append(compiledTemplate);
     $('.materialboxed').materialbox();
   });
 }
@@ -132,13 +133,19 @@ function ajaxRequest(method, url, data, callback) {
 
 function getProfile(event){
   event.preventDefault();
+  $('#newsfeed').hide();
   var userId = localStorage.getItem("userId");
   return ajaxRequest("get", "http://localhost:3000/api/users/" + userId, null, showProfile)
 }
 
 function showProfile(data){
   event.preventDefault();
+  $('#newsfeed').hide();
+  $('#profileSection').show();
   console.log(data)
+  var underscoreTemplate = _.template($("#profile-template").html());
+  var compiledTemplate = underscoreTemplate(data);
+  $("#my-info").append(compiledTemplate);
 }
 
 function hideProfile(){
