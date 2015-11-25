@@ -7,7 +7,7 @@ function init(){
     anchors: ['landingPage', 'about', 'madeBy']
   });
   $("form").on("submit", submitForm);
-  $("profile").on("click", getProfile);
+  $("#profile").on("click", Profile);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   $('.modal-trigger').leanModal();
@@ -44,7 +44,7 @@ function submitForm(event){
 }
 
 function logout(){
-  removeToken();
+  removeData();
   return loggedOutState();
 }
 
@@ -72,19 +72,23 @@ function loggedOutState(){
 }
 
 function authenticationSuccessful(data) {
-  if (data.token) setToken(data.token);
+  if (data.token) setData(data);
   checkLoginState();
 }
 
-function setToken(token) {
-  return localStorage.setItem("token", token)
+function setData(data) {
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("userId", data.user._id);
+  localStorage.setItem("user-name", data.user.username);
+  localStorage.setItem("user-email", data.user.email);
+  localStorage.setItem("user-pic", data.user.picture_url);
 }
 
 function getToken() {
   return localStorage.getItem("token");
 }
 
-function removeToken() {
+function removeData() {
   return localStorage.clear();
 }
 
@@ -106,13 +110,25 @@ function ajaxRequest(method, url, data, callback) {
   });
 }
 
-function getProfile(){
+function Profile(data){
   event.preventDefault();
-  return ajaxRequest("get", "http://localhost:3000/api/users/:" + user_id, data, callback)
+  var userId = localStorage.getItem("userId");
+  return ajaxRequest("get", "http://localhost:3000/api/users/:" + userId, data, showProfile)
+}
+
+function showProfile(data){
+  event.preventDefault();
+  console.log(data)
+
+  data.users.forEach(function(user) {
+    // $(".users").append( '<li>' + user.local.email + '</li>' )
+  })
+
 }
 
 function hideProfile(){
   event.preventDefault();
+
 }
 
 
@@ -127,11 +143,11 @@ function hideProfile(){
 // }
 
 // function logout(){
-//   removeToken();
+//   removeData();
 //   return loggedOutState();
 // }
 
-// function removeToken() {
+// function removeData() {
 //   return localStorage.clear();
 // }
 
