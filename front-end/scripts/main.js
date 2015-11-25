@@ -63,12 +63,32 @@ function loggedInState(){
   $.fn.fullpage.destroy();
   $("#fullpage").hide();
   $("#newsfeed").show();
+  titles();
 }
+
 
 function loggedOutState(){
   $("section, .logged-in").hide();
   $("#register, .logged-out").show();
-  $("fullpage").show();
+  $("#fullpage").show();
+}
+
+function titles() {
+  event.preventDefault();
+  return getTitles();
+}
+
+function getTitles() {
+  return ajaxRequest("get", "http://localhost:3000/api/articles", null, showTitles)
+}
+
+function showTitles(data) {
+  _(data.articles).each(function(article){
+    var underscoreTemplate = _.template($("#list-template").html());
+    var compiledTemplate = underscoreTemplate(article);
+    $("#my-list").append(compiledTemplate);
+    $('.materialboxed').materialbox();
+  });
 }
 
 function authenticationSuccessful(data) {
@@ -114,91 +134,3 @@ function getProfile(){
 function hideProfile(){
   event.preventDefault();
 }
-
-
-// $(init);
-
-//  function init(){
-//   $("form").on("submit", submitForm);
-//   $(".logout-link").on("click", logout);
-//   $(".login-link, .register-link").on("click", showPage);
-//   hideErrors();
-//   checkLoginState();  
-// }
-
-// function logout(){
-//   removeToken();
-//   return loggedOutState();
-// }
-
-// function removeToken() {
-//   return localStorage.clear();
-// }
-
-// function checkLoginState(){
-//   if (getToken()) {
-//     return loggedInState();
-//   } else {
-//     return loggedOutState();
-//   }
-// }
-
-// function checkLogInState() {
-
-// }
-
-// function loggedInState() {
-
-// }
-
-// function loggedOutState() {
-
-// }
-
-// function authenticationSuccessful() {
-
-// }
-
-// function setToken() {
-
-// }
-
-// function getToken() {
-//   return localStorage.getItem("token");
-// }
-
-// function showProfile() {
-
-// }
-
-// function hideProfile() {
-
-// }
-
-// function setRequestHeader() {
-
-// }
-
-// function showPage() {
-
-// }
-
-// function submitForm() {
-
-// }
-
-// function displayJumbles() {
-
-// }
-// function ajaxRequest(method, url, data, callback) {
-//   return $.ajax({
-//     method: method,
-//     url: url,
-//     data: data,
-//     beforeSend: setRequestHeader,
-//   }).done(function(data){
-//     callback(data);
-//   }).fail(function(data) {
-//     displayErrors(data.responseJSON.message);
-//   });
-// };

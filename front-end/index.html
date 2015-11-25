@@ -106,11 +106,32 @@
 		<!-- 		    	**************HOMEPAGE************************ -->
 
 
-		
+	<section id="newsfeed">
 
+	<script type="text/x-template" id="list-template">
+	 
 
+		     <div class="col s1 m3">
+		       <div class="card">
+		         <div class="card-image">
+		           <img class="materialboxed" src="./images/culture.jpg">
+		           <span class="card-title"></span>
+		         </div>
+		         <div class="card-content">
+		           <p class="articles"> <%= title%> </p>
+		         </div>
+		         <div class="card-action">
+		           <a target="_blank" href="<%= article_url %>">This is a link</a>
+		         </div>
+		       </div>
+		     </div>
+	</script>
 
+	<div class="row">
+		<ul id="my-list"></ul>
+	</div>
 
+	</section>		
 
 		<!-- 		    	**************PROFILEPAGE************************ -->
 
