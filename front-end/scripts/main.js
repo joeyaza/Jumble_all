@@ -1,7 +1,12 @@
 $( init);
 
 function init(){
+  $('#fullpage').fullpage({
+    sectionsColor: ['#A5D8FF', '#758ECD', '#D5C6E0', '#C5979D', '#C5979D'],
+    fixedElements: '#navbar'
+  });
   $("form").on("submit", submitForm);
+  $("profile").on("click", getProfile);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
   hideErrors();
@@ -96,6 +101,14 @@ function ajaxRequest(method, url, data, callback) {
   });
 }
 
+function getProfile(){
+  event.preventDefault();
+  return ajaxRequest("get", "http://localhost:3000/api/users/:" + user_id, data, callback)
+}
+
+function hideProfile(){
+  event.preventDefault();
+}
 
 
 // $(init);
