@@ -1,6 +1,9 @@
 $( init);
 
 function init(){
+  $('#fullpage').fullpage({
+    sectionsColor: ['#A5D8FF', '#758ECD', '#D5C6E0', '#C5979D', '#C5979D'], 
+    fixedElement: "#navbar"});
   $("form").on("submit", submitForm);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
@@ -52,13 +55,33 @@ function displayErrors(data){
 function loggedInState(){
   $("section, .logged-out").hide();
   $("#users, .logged-in").show();
+  $.fn.fullpage.destroy();
   $("#fullpage").hide();
   $("#newsfeed").show();
+  titles();
 }
+
 
 function loggedOutState(){
   $("section, .logged-in").hide();
   $("#register, .logged-out").show();
+}
+
+function titles() {
+  event.preventDefault();
+  return getTitles();
+}
+
+function getTitles() {
+  return ajaxRequest("get", "http://localhost:3000/api/articles", null, showTitles)
+}
+
+function showTitles(data) {
+  console.log(data)
+  return $.each(data.articles, function(index, article){
+    $('.articles').append('<p>' + article.title + article.article_url + '<p>');
+
+  });
 }
 
 function authenticationSuccessful(data) {
