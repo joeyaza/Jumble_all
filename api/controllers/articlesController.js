@@ -1,5 +1,6 @@
 var Article = require('../models/article');
-var request = require('request');
+var request = require('request-promise');
+var cheerio = require('cheerio');
 
 // (function poll(){
 //    setTimeout(function() {
@@ -40,7 +41,43 @@ function addArticles(req, res) {
   return res.status(200).json({message: "Done"});
 }
 
+function scrapeArticles(req, res) {
+  Article.find(function(err, articles) {
+    if (err) return res.status(500).json({message: "Something went wrong"});
+
+    articles.forEach(function(article, i){
+     var url = article.article_url
+     console.log(url);
+     request(url)
+      .then(function(body, response) {
+        article.content = selectScrape(body, response);
+        article.save(function(err, article) {
+          if (err) return res.status(500).json({message: "Something went wrong"});
+        });
+      });
+    })
+  });
+  return res.status(200).json({message: "Finished scraping"});
+}
+
+function selectScrape(body, response) {
+  console.log("scraping...");
+  var $ = cheerio.load(body);
+
+  var articleArray = [];
+
+  $("div.js-article__body > p").each(function(i, element){
+    articleArray.push($(element).text())
+  });
+  
+  var title   = $("h1.content__headline").text();
+  var articleContent = articleArray.join("\n");
+  console.log(articleContent);
+  return articleContent;
+}
+
 module.exports = {
   articlesIndex: articlesIndex,
-  addArticles: addArticles
+  addArticles: addArticles,
+  scrapeArticles: scrapeArticles
 }

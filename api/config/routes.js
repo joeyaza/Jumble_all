@@ -40,4 +40,7 @@ router.route('/newvideos')
 router.route('/videos')
   .get(videosController.videosIndex);
 
+router.route('/scraper')
+  .get(articlesController.scrapeArticles);
+
 module.exports = router
