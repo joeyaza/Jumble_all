@@ -74,8 +74,8 @@
 			<form class="register col s12" method="post" action="/register">
 				<div class="row">
 					<input type="text" name="username" class="validate" placeholder="Username">
-					<input type="text" name="fullname" class="validate" placeholder="Full name">
-					<input type="text" name="image" class="validate" placeholder="Image URL">
+					<input type="text" name="fullName" class="validate" placeholder="Full name">
+					<input type="text" name="picture_url" class="validate" placeholder="picture_url">
 					<input type="email" name="email" class="validate" placeholder="Email">
 					<input type="password" name="password" class="validate" placeholder="Password">
 				</div>
@@ -101,61 +101,65 @@
 
 		</div>
 	</div>
-			<!-- 		    	**************HOMEPAGE************************ -->
+	<!-- 		    	**************HOMEPAGE************************ -->
 
 
-		<section id="newsfeed">
-				<script type="text/x-template" id="list-template">
+	<section id="newsfeed">
+		<script type="text/x-template" id="list-template">
 
 
-					<div class="col s1 m3">
-						<div class="card">
-							<div class="card-image">
-								<img class="materialboxed" src="./images/culture.jpg">
-								<span class="card-title"></span>
-							</div>
-							<div class="card-content">
-								<p class="articles"> <%= title%> </p>
-							</div>
-							<div class="card-action">
-								<a target="_blank" href="<%= article_url %>">This is a link</a>
-							</div>
-						</div>
+			<div class="col s1 m3">
+				<div class="card">
+					<div class="card-image">
+						<img class="materialboxed" src="./images/culture.jpg">
+						<span class="card-title"></span>
 					</div>
-				</script>
+					<div class="card-content">
+						<p class="articles"> <%= title%> </p>
+					</div>
+					<div class="card-action">
+						<a target="_blank" href="<%= article_url %>">This is a link</a>
+					</div>
+				</div>
+			</div>
+		</script>
 
-				<div class="row">
-					<ul id="my-list"></ul>
+		<div class="row">
+			<ul id="my-list"></ul>
+		</div>
+
+	</section>		
+
+	<!-- 		    	**************PROFILEPAGE************************ -->
+
+	<section id="profileSection">
+		<script type="text/x-template" id="profile-template">
+
+			<div class="row user-info-row-1">
+				<div class="col s12 m6">
+
+					<div class="valign-wrapper">
+						<img class="valign" src=<%= user.local.picture_url %> >
+					</div>
+
+					<p class="user-fullname-txt"> <%= user.local.fullName %></p>
 				</div>
 
-			</section>		
+				<div class="col s12 m6">
+					<p class="user-info-txt"> UserName: <%= user.local.username %></p>
+					<p class="user-info-txt"> Email ID: <%= user.local.email %></p>
+				</div>
+			</div>
+		</script>
 
-			<!-- 		    	**************PROFILEPAGE************************ -->
+		<div class="row">
+			<ul id="my-info">
+			</ul>
+		</div>
 
-		    	<section id="profileSection">
-		    		<script type="text/x-template" id="profile-template">
+	</section>
 
-		    		    <div class="row">
-        					<div class="col s12 m6">
-        						<img src=<%= user.local.picture_url %>>	
-        					</div>
-        					
-		    		    	<div class="col s12 m6">
-		    		    		<p> <%= user.local.username %></p>
-		    		    		<p> <%= user.local.fullName %></p>
-		    		    		<p> <%= user.local.email %></p>
-		    		    	</div>
-		    		    </div>
-		    		</script>
 
-		    		<div class="row">
-		    			<ul id="my-info">
-		    			</ul>
-		    		</div>
 
-		    	</section>
-    
-
-		
 </body>
 </html>
