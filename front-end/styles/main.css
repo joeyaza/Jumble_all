@@ -38,8 +38,16 @@ nav {
   height: 95px;
 }
 
+.card-image {
+  height: 230px;
+}
+
+.card-content {
+  height: 110px;
+}
+
 .card {
-  height: 370px;
+  height: 420px;
 }
 
 .user-info-row-1 {
