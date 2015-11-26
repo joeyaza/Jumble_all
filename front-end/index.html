@@ -130,26 +130,34 @@
 
 	</section>		
 
-	<!-- 		    	**************PROFILEPAGE************************ -->
 
+
+
+
+
+
+	<!-- 		    	**************PROFILEPAGE************************ -->
 	<section id="profileSection">
 		<script type="text/x-template" id="profile-template">
 
 			<div class="row user-info-row-1">
 				<div class="col s12 m6">
-
-					<div class="valign-wrapper">
-						<img class="valign" src=<%= user.local.picture_url %> >
-					</div>
-
+					<img class="center-align" src=<%= user.local.picture_url %> >
 					<p class="user-fullname-txt"> <%= user.local.fullName %></p>
 				</div>
 
 				<div class="col s12 m6">
 					<p class="user-info-txt"> UserName: <%= user.local.username %></p>
 					<p class="user-info-txt"> Email ID: <%= user.local.email %></p>
+					<p class="user-info-txt"> Favourited Categories: <%= user.local.favourite_categories %></p>
 				</div>
 			</div>
+
+			<div class="row">
+				
+			</div>
+
+
 		</script>
 
 		<div class="row">
@@ -158,6 +166,8 @@
 		</div>
 
 	</section>
+
+
 
 
 

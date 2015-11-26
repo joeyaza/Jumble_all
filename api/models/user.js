@@ -10,7 +10,7 @@ var userSchema = new mongoose.Schema({
       picture_url: String
     },
     favourite_categories: [],
-    favourite_jumbuls: [{type: mongoose.Schema.Types.ObjectId, ref: 'Article'}, {type: mongoose.Schema.Types.ObjectId, ref: 'Video'}, {type: mongoose.Schema.Types.ObjectId, ref: 'Image'}]
+    favourite_jumbuls: []
 });
 
 userSchema.statics.encrypt = function(password) {

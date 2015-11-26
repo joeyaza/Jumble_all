@@ -152,3 +152,9 @@ function hideProfile(){
   event.preventDefault();
 
 }
+
+function getJumbles(){
+  event.preventDefault();
+  $('#profileSection').hide();
+  $('#newsfeed').show();
+}
