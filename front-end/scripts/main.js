@@ -132,7 +132,7 @@ function getCategories(event) {
 function showCategories(data) {
   $('#categoryChoice').fadeIn();
   data.categories.forEach(function(category, index){
-    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in" id="cat'+index+'" name="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
+    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in"'+ ($.inArray(category, getCats()) > -1 ? ' checked="checked"' : '') +' id="cat'+index+'" name="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
   }) 
 }
 
