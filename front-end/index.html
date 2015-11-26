@@ -117,37 +117,40 @@
 	</section>
 
 
-		<section id="newsfeed">
-				<script type="text/x-template" id="list-template">
+	<section id="newsfeed">
 
-
-					<div class="col s1 m3">
-						<div class="card">
-							<div class="card-image">
-								<img class="materialboxed" src="./images/culture.jpg">
-								<span class="card-title"></span>
-							</div>
-							<div class="card-content">
-								<p class="articles"> <%= title%> </p>
-							</div>
-							<div class="card-action">
-								<a target="_blank" href="<%= article_url %>">This is a link</a>
-							</div>
-						</div>
+		<script type="text/x-template" id="list-template">
+			<div class="col s1 m3">
+				<div class="card">
+					<div class="card-image">
+						<img class="materialboxed" src="./images/culture.jpg">
+						<span class="card-title"></span>
 					</div>
-				</script>
+					<div class="card-content">
+						<p class="articles"> <%= title %> </p>
+					</div>
+					<div class="card-action">
+						<a class="modal-trigger waves-effect waves-light btn" href="#<%= _id %>">Read More</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="<%= _id %>" class="modal modal-fixed-footer">
+				<div class="modal-content">
+					<h4><%= title %></h4>
+					<p><%= content %></p>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" id="goback">Go Back</button>
+				</div>
+			</div>
+		</script>
 
 		<div class="row">
 			<ul id="my-list"></ul>
 		</div>
 
 	</section>		
-
-
-
-
-
-
 
 	<!-- 		    	**************PROFILEPAGE************************ -->
 	<section id="profileSection">
@@ -179,10 +182,6 @@
 		</div>
 
 	</section>
-
-
-
-
 
 </body>
 </html>

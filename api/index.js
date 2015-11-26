@@ -57,7 +57,7 @@ app.use(function (err, req, res, next) {
   next();
 });
 
-var routes          = require(path.join(__dirname,'config','routes'));
+var routes = require(path.join(__dirname,'config','routes'));
 app.use('/api', routes);
 
 app.listen(process.env.PORT || 3000);
