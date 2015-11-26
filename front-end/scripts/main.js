@@ -7,7 +7,7 @@ function init(){
     anchors: ['landingPage', 'about', 'madeBy']
   });
   $("form").on("submit", submitForm);
-  $("categories-link").on("click", getCategories);
+  $(".categories-link").on("click", getCategories);
   $(".profile-link").on("click", getProfile);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
@@ -120,6 +120,14 @@ function setRequestHeader(xhr, settings) {
 
 function getCategories(event) {
   event.preventDefault();
+  return ajaxRequest("get", "http://localhost:3000/api/categories", null, showCategories);
+}
+
+function showCategories(data) {
+  $('#categoryChoice').fadeIn();
+  data.categories.forEach(function(category, index){
+    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in" checked="checked" id="cat'+index+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
+  }) 
 }
 
 function ajaxRequest(method, url, data, callback) {

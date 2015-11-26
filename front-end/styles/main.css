@@ -23,9 +23,10 @@ nav .nav-wrapper {
   height: 95px;
 }
 #navbar{
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
+  min-height: 95px;
 }
 
 nav {
