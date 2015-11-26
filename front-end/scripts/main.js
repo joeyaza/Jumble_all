@@ -145,7 +145,7 @@ function showProfile(data){
   console.log(data)
   var underscoreTemplate = _.template($("#profile-template").html());
   var compiledTemplate = underscoreTemplate(data);
-  $("#my-info").append(compiledTemplate);
+  $("#my-info").html(compiledTemplate);
 }
 
 function hideProfile(){
