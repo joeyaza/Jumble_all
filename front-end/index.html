@@ -74,11 +74,11 @@
 			<h4>Register</h4>
 			<form id="register" class="col s12" method="post" action="/register">
 				<div class="row">
-					<input type="text" name="username" class="validate" placeholder="Username">
-					<input type="text" name="fullName" class="validate" placeholder="Full name">
-					<input type="text" name="picture_url" class="validate" placeholder="picture_url">
-					<input type="email" name="email" class="validate" placeholder="Email">
-					<input type="password" name="password" class="validate" placeholder="Password">
+					<input type="text" name="username" class="validate" placeholder="Username" autocomplete="off">
+					<input type="text" name="fullName" class="validate" placeholder="Full name" autocomplete="off">
+					<input type="text" name="picture_url" class="validate" placeholder="picture_url" autocomplete="off">
+					<input type="email" name="email" class="validate" placeholder="Email" autocomplete="off">
+					<input type="password" name="password" class="validate" placeholder="Password" autocomplete="off">
 				</div>
 				<button type="submit" class="btn waves-effect modal-action modal-close">Submit<i class="material-icons right">send</i></button>
 			</form>
@@ -176,24 +176,17 @@
 
 	<section id="profileSection">
 		<script type="text/x-template" id="profile-template">
-		<div class = "profile_container">
-			<div class="row user-info-row-1">
-				<div class="col s12 m6">
-					<img class="center-align" src=<%= user.local.picture_url %> >
-					<p class="user-fullname-txt"> <%= user.local.fullName %></p>
-				</div>
 
-				<div class="col s12 m6">
-					<p class="user-info-txt"> UserName: <%= user.local.username %></p>
-					<p class="user-info-txt"> Email ID: <%= user.local.email %></p>
-					<p class="user-info-txt"> Favourited Categories: <%= user.favourite_categories %></p>
-				</div>
-			</div>
-			</div>
-			<div class="row">
-				
-			</div>
 
+			<div class="widget">
+			  <div class="cover">
+			    <img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg" />
+			  </div>
+			  <img src="<%= user.local.picture_url %>" class="photo" />
+			  <h1><%= user.local.fullName %></h1>
+			  <h2><%= user.local.email %></h2>
+			  <h3><%= user.favourite_categories %></h3>
+			</div>
 
 		</script>
 

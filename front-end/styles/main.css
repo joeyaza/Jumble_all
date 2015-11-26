@@ -10,7 +10,6 @@ body {
 h1 {
   color: #FAFAFA;
   font-size: 160px;
-  text-shadow: 5px 5px #282828;
   text-align: center;
 }
 
@@ -86,53 +85,99 @@ nav {
   height: 250px;
 }
 
-/*@import url(http://fonts.googleapis.com/css?family=Lato:300);*/
 
-.profile_ting {
-  max-width: 15em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2em;
-  background-color: #f2f2f2;
-  color: #444;
-  font-family: bookman;
-  font-weight: 300;
-  line-height: 1;
-  text-align: center;
+@import url(http://c.boylett.uk/fonts/fontawesome/fontawesome.css);
+
+html, body { height: 100% }
+
+body
+{
+/*  background: url(http://c.boylett.uk/images/wallpapers/009.jpg);
+  background-size: 100% 100%;*/
 }
 
-.profile-img {
+.widget
+{
+  position: relative;
+  width: 300px;
+  height: 350px;
+  margin: 210px auto;
+  background: #FFF;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+}
+
+.widget > .cover
+{
+  height: 160px;
+  overflow: hidden;
+}
+
+.widget > .cover > img
+{
+  width: 100%;
+  height: auto;
+  min-height: 160px;
+  border-radius: 4px 4px 0 0;
+}
+
+.widget > .photo
+{
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 0 0 -55px;
+  border: 5px solid #FFF;
+  border-radius: 50%;
+}
+
+.widget > h1, .widget > h2, .widget > h3
+{
   display: block;
-  height: 7em;
-  margin-right: auto;
-  margin-left: auto;
-  border: .5em solid #f2f2f2;
-  border-radius: 100%;
-  box-shadow:  0 1px 0 0 rgba(0,0,0,.1);
+  margin: 10px 0;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #999;
 }
 
-.profile-text {
-  margin-top: -3.5em;
-  padding: 5em 1.5em 1.5em 1.5em; 
-  background: white;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1)
+.widget > h1
+{
+  margin: 60px 0 20px;
+  font-size: 26px;
+  color: #000;
 }
 
-.profile-name{
-  margin-right: -1em;
-  margin-bottom: .75em;
-  margin-left: -1em;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  padding-bottom: .75em;
-  font-size: 1.5em;
-  text-transform: uppercase;
+.widget > h3 { font-size: 12px }
+
+.widget > ul
+{
+  position: absolute;
+  top: 20px;
+  left: 100%;
+  background: #2CDFD3;
+  border-radius: 0 3px 3px 0;
 }
 
-.profile-title {
-  color: #ccc;
+.widget > ul > li > a
+{
+  display: block;
+  padding: 5px 6px;
+  color: #FFF;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 1px solid #2CD5CA;
+  transition: background-color .3s;
 }
 
-h1 {
-  font-family: bookman;
+.widget > ul > li:hover > a { background-color: #2CD5CA }
+.widget > ul > li:first-child > a { border-radius: 0 3px 0 0 }
+
+.widget > ul > li:last-child > a
+{
+  border: none;
+  border-radius: 0 0 3px 0;
 }
