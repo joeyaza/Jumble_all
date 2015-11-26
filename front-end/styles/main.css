@@ -58,3 +58,8 @@ nav {
   text-decoration: bold;
   font-size: 20px; 
 }
+
+.user-pik {
+  width: 450px;
+  height: 300px;
+}
