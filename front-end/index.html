@@ -8,6 +8,8 @@
 	<!-- Fullpage -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.5/jquery.fullPage.css" />
 
+	<link href='https://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css'>
+
 	<!-- JQuery Library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -35,25 +37,25 @@
 	<!-- NAVBAR -->
 	<div id="navbar">
 		<nav>
-		  <div class="nav-wrapper">
-		  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-		    <a href="#" class="brand-logo center">
-		    	<img src="/images/logo.png" class="logo-image">
-		    </a>
-		    <ul id="nav-mobile-left" class="left hide-on-med-and-down">
-		      <li><a href="#landingPage" class="logged-out">Home</a></li>
-		      <li><a href="#about" class="logged-out">About</a></li>
-		      <li><a href="#madeBy" class="logged-out">Made By</a></li>
-		    </ul>
-		    <ul id="nav-mobile-right" class="right hide-on-med-and-down">
-		    	<li><a href="/" class="categories-link logged-in">Categories</a></li>
-		      <li><a href="/">Jumbles</a></li>
-		      <li><a href="/" class="profile-link logged-in">Profile</a></li>
-		      <li><a href="#registerModal" class="register-link logged-out modal-trigger">Sign up</a></li>
-		      <li><a href="#loginModal" class="login-link logged-out modal-trigger">Log In</a></li>
-		      <li><a href="/" class="logout-link logged-in">Log Out</a></li>
-		    </ul>
-		  </div>
+			<div class="nav-wrapper">
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<a href="#" class="brand-logo center">
+					<img src="/images/logo.png" class="logo-image">
+				</a>
+				<ul id="nav-mobile-left" class="left hide-on-med-and-down">
+					<li><a href="#landingPage" class="logged-out">Home</a></li>
+					<li><a href="#about" class="logged-out">About</a></li>
+					<li><a href="#madeBy" class="logged-out">Made By</a></li>
+				</ul>
+				<ul id="nav-mobile-right" class="right hide-on-med-and-down">
+					<li><a href="/" class="categories-link logged-in">Categories</a></li>
+					<li><a href="/">Jumbles</a></li>
+					<li><a href="/" class="profile-link logged-in">Profile</a></li>
+					<li><a href="#registerModal" class="register-link logged-out modal-trigger">Sign up</a></li>
+					<li><a href="#loginModal" class="login-link logged-out modal-trigger">Log In</a></li>
+					<li><a href="/" class="logout-link logged-in">Log Out</a></li>
+				</ul>
+			</div>
 		</nav>
 	</div>
 	<!-- 		    	****************** WELCOME PAGE ******************** -->
@@ -95,84 +97,190 @@
 		</div>
 		<!-- MADEBY SCREEN -->
 		<div class="section" id="made-by">
-		</div>
-		<div class="section"></div>
-	</div>
-		<!-- 		    	**************HOMEPAGE************************ -->
-	
-	<section id="categoryChoice">
-		<h4>Choose your categories</h4>
-		<form id="cats-form" class="login col s12" method="put" action="/users">
-			<div class="row">
-			</div>
-			<button type="submit" class="btn waves-effect">Save changes</button>
-			<button type="button" id="cancelCats" class="btn waves-effect">Cancel</button>
-		</form>
-	</section>
 
-	<section id="newsfeed">
-		<script type="text/x-template" id="list-template">
-			<div class="col s12 m4">
-				<div class="card">
-					<div class="card-image">
-						<img class="materialboxed" src=<%= image %>>
-						<span class="card-title"></span>
-					</div>
-					<div class="card-content">
-						<p class="articles"> <%= title %> </p>
-					</div>
-					<div class="card-action">
-						<a class="modal-trigger waves-effect waves-circle waves-light cyan btn-floating secondary-content" href="#<%= _id %>"><i class="material-icons">add</i></a>
-					</div>
-				</div>
-			</div>
-			<div id="<%= _id %>" class="modal modal-fixed-footer">
-				<div class="modal-content">
-					<h4><%= title %></h4>
-					<p><%= content %></p>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="modal-action modal-close waves-effect waves-purple btn-flat" id="goback">Go Back</button>
-				</div>
-			</div>
-		</script>
+			<div class="row ">
+				<div class="col s12 m3">
+					<div class="widget">
+						<div class="cover">
 
-		<script type="text/x-template" id="video-template">
+							<img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg">
+						</div>
+						<img src="./images/Ramish_Pik.png" class="photo" />
+						<div class="card-content">
+							<p class="dev-name">Ramish Mian</p>
+						</div>
+
+					</div>
+				</div>
+
+
+
+				<div class="col s12 m3">
+					<div class="widget">
+
+						<div class="cover">
+							<img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg">
+						</div>
+
+						<img src="./images/joey.jpg" class="photo" />
+						<div class="card-content">
+							<p class="dev-name">Joseph Azadehdel</p>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col s12 m3">
+					<div class="widget">
+						<div class="cover">
+							<img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg">
+						</div>
+						<img src="./images/gows.jpg" class="photo" />
+						<div class="card-content">
+							<p class="dev-name">Gows Kiri</p>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="col s12 m3">
+					<div class="widget">
+						<div class="cover">
+
+							<img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg">
+						</div>
+						<img src="./images/mark.jpg" class="photo" />
+						<div class="card-content">
+							<p class="dev-name">Marc Baghdadi</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+<!-- 
 			<div class="col s12 m3">
-				<div class="card" id="video-card">
-					<div class="card-image">
-						<div class="video-container">
-							<iframe width="350" height="200" src="https://www.youtube.com/embed/<%= video_url %>" frameborder="0" allowfullscreen></iframe>
+				<div class="card dev-card">
+					<div class="card-image dev-card-img">
+						<img src="./images/joey.jpg" class="dev-pik" style="height:237px;">
+						<span class="card-title dev-card-ttl"></span>
+					</div>
+					<div class="card-content dev-card-cntnt">
+						<p class="dev-name">Joey</p>
+					</div>
+					<div class="card-action dev-card-action">
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col s12 m3">
+				<div class="card dev-card">
+					<div class="card-image dev-card-img">
+						<img src="./images/gows.jpg" class="dev-pik" style="height:237px;">
+						<span class="card-title dev-card-ttl"></span>
+					</div>
+					<div class="card-content dev-card-cntnt">
+						<p class="dev-name">Gows Kiri</p>
+					</div>
+					<div class="card-action dev-card-action">
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col s12 m3">
+				<div class="card dev-card">
+					<div class="card-image dev-card-img">
+					<img src="./images/mark.jpg" class="dev-pik" style="height:237px;">
+						<span class="card-title dev-card-ttl"></span>
+					</div>
+					<div class="card-content dev-card-cntnt">
+						<p class="dev-name">Marc Baghdadi</p>
+					</div>
+					<div class="card-action dev-card-action">
+
+					</div>
+				</div>
+			</div> -->
+
+		</div>
+		<!-- 		    	**************HOMEPAGE************************ -->
+
+		<section id="categoryChoice">
+			<h4>Choose your categories</h4>
+			<form id="cats-form" class="login col s12" method="put" action="/users">
+				<div class="row">
+				</div>
+				<button type="submit" class="btn waves-effect">Save changes</button>
+				<button type="button" id="cancelCats" class="btn waves-effect">Cancel</button>
+			</form>
+		</section>
+
+		<section id="newsfeed">
+			<script type="text/x-template" id="list-template">
+				<div class="col s12 m4">
+					<div class="card">
+						<div class="card-image">
+							<img class="materialboxed" src=<%= image %>>
+							<span class="card-title"></span>
 						</div>
 						<div class="card-content">
-							<p><%= title %></p>
+							<p class="articles"> <%= title %> </p>
+						</div>
+						<div class="card-action">
+							<a class="modal-trigger waves-effect waves-circle waves-light cyan btn-floating secondary-content" href="#<%= _id %>"><i class="material-icons">add</i></a>
 						</div>
 					</div>
 				</div>
+				<div id="<%= _id %>" class="modal modal-fixed-footer">
+					<div class="modal-content">
+						<h4><%= title %></h4>
+						<p><%= content %></p>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="modal-action modal-close waves-effect waves-purple btn-flat" id="goback">Go Back</button>
+					</div>
+				</div>
+			</script>
+
+			<script type="text/x-template" id="video-template">
+				<div class="col s12 m3">
+					<div class="card" id="video-card">
+						<div class="card-image">
+							<div class="video-container">
+								<iframe width="350" height="200" src="https://www.youtube.com/embed/<%= video_url %>" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<div class="card-content">
+								<p><%= title %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</script>
+			<div class="row" id="my-list">
 			</div>
-		</script>
-		<div class="row" id="my-list">
-		</div>
-		<div class="row" id="video-list">
-		</div>
-	</section>
-	<!-- 		    	**************PROFILE PAGE************************ -->
-	<section id="profileSection">
-		<script type="text/x-template" id="profile-template">
-			<div class="widget">
-			  <div class="cover">
-			    <img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg" />
-			  </div>
-			  <img src="<%= user.local.picture_url %>" class="photo" />
-			  <h1><%= user.local.fullName %></h1>
-			  <h2><%= user.local.email %></h2>
-			  <h3><%= user.favourite_categories %></h3>
+			<div class="row" id="video-list">
 			</div>
-		</script>
-		<div class="row">
-			<ul id="my-info">
-			</ul>
-		</div>
-	</section>
-</body>
-</html>
+		</section>
+		<!-- 		    	**************PROFILE PAGE************************ -->
+		<section id="profileSection">
+			<script type="text/x-template" id="profile-template">
+				<div class="widget">
+					<div class="cover">
+						<img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg" />
+					</div>
+					<img src="<%= user.local.picture_url %>" class="photo" />
+					<h1><%= user.local.fullName %></h1>
+					<h2><%= user.local.email %></h2>
+					<h3><%= user.favourite_categories %></h3>
+				</div>
+			</script>
+			<div class="row">
+				<ul id="my-info">
+				</ul>
+			</div>
+		</section>
+	</body>
+	</html>
