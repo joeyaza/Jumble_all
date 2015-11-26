@@ -85,10 +85,12 @@ function getTitles() {
 
 function showTitles(data) {
   _(data.articles).each(function(article){
-    var underscoreTemplate = _.template($("#list-template").html());
-    var compiledTemplate = underscoreTemplate(article);
-    $("#my-list").append(compiledTemplate);
-    $('.materialboxed').materialbox();
+    if ($.inArray(article.category, getFaveCats())>-1) {
+      var underscoreTemplate = _.template($("#list-template").html());
+      var compiledTemplate = underscoreTemplate(article);
+      $("#my-list").append(compiledTemplate);
+      $('.materialboxed').materialbox();
+    }
   });
 }
 
@@ -111,8 +113,8 @@ function getToken() {
   return localStorage.getItem("token");
 }
 
-function getCats() {
-  return localStorage.getItem("user-cats");
+function getFaveCats() {
+  return localStorage.getItem("user-cats").split(",");
 }
 
 function removeData() {
@@ -132,7 +134,12 @@ function getCategories(event) {
 function showCategories(data) {
   $('#categoryChoice').fadeIn();
   data.categories.forEach(function(category, index){
-    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in"'+ ($.inArray(category, getCats()) > -1 ? ' checked="checked"' : '') +' id="cat'+index+'" name="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
+    var checked = '';
+    console.log($.inArray(category.title, getFaveCats()),getFaveCats(),category.title);
+    if ($.inArray(category.title, getFaveCats()) > -1) {
+      checked = 'checked';
+    }
+    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in"'+checked+' id="cat'+index+'" name="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
   }) 
 }
 
