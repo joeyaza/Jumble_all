@@ -45,7 +45,7 @@ function submitForm(event){
 
 function logout(){
   removeData();
-  return loggedOutState();
+  // return loggedOutState();
 }
 
 
@@ -79,6 +79,7 @@ function titles() {
 }
 
 function getTitles() {
+  $('html').removeClass('fp-enabled');
   return ajaxRequest("get", "http://localhost:3000/api/articles", null, showTitles)
 }
 
@@ -88,7 +89,12 @@ function showTitles(data) {
     var compiledTemplate = underscoreTemplate(article);
     $("#my-list").append(compiledTemplate);
     $('.materialboxed').materialbox();
+  
+
   });
+  $('.modal-trigger').leanModal({dismissable: true, opacity: 0.5});
+  
+
 }
 
 function authenticationSuccessful(data) {
