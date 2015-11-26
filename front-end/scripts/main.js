@@ -106,7 +106,6 @@ function showVideos(data) {
   $("#video-list").empty();
   _(data.videos).each(function(video){
     if ($.inArray(video.category, getFaveCats())>-1) {
-      console.log(video);
       var underscoreTemplate = _.template($("#video-template").html());
       var compiledTemplate = underscoreTemplate(video);
       $("#video-list").append(compiledTemplate);
@@ -179,6 +178,7 @@ function getCategories(event) {
 function showCategories(data) {
   $('#categoryChoice').fadeIn();
   $('#cats-form div.row').empty();
+  console.log(data.categories.sort());
   data.categories.forEach(function(category, index){
     var checked = '';
     if ($.inArray(category.title, getFaveCats()) > -1) {
@@ -217,7 +217,6 @@ function showProfile(data){
   event.preventDefault();
   $('#newsfeed').hide();
   $('#profileSection').show();
-  console.log(data)
   var underscoreTemplate = _.template($("#profile-template").html());
   var compiledTemplate = underscoreTemplate(data);
   $("#my-info").html(compiledTemplate);

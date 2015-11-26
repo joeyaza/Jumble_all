@@ -26,6 +26,12 @@ function addArticles(req, res) {
           if (oldArticle) return false;
 
           var newArticle = new Article();
+          request(article.webUrl)
+            .then(function(body, response) {
+              var results = selectScrape(body, response);
+              newArticle.content = results[0];
+              newArticle.image = results[1];
+            })
           newArticle.title = article.webTitle;
           newArticle.article_url = article.webUrl;
           newArticle.created_at = article.webPublicationDate;
@@ -50,7 +56,9 @@ function scrapeArticles(req, res) {
      console.log(url);
      request(url)
       .then(function(body, response) {
-        article.content = selectScrape(body, response);
+        var results = selectScrape(body, response);
+        article.content = results[0];
+        article.image = results[1];
         article.save(function(err, article) {
           if (err) return res.status(500).json({message: "Something went wrong"});
         });
@@ -72,8 +80,9 @@ function selectScrape(body, response) {
   
   var title   = $("h1.content__headline").text();
   var articleContent = articleArray.join("\n");
-  console.log(articleContent);
-  return articleContent;
+  console.log($(".media-primary a div img").attr("srcset").split(" ")[0]);
+  var image = $(".media-primary a div img").attr("srcset").split(" ")[0];
+  return [articleContent,image];
 }
 
 module.exports = {
