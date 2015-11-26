@@ -6,7 +6,9 @@ function init(){
     fixedElements: '#navbar',
     anchors: ['landingPage', 'about', 'madeBy']
   });
-  $("form").on("submit", submitForm);
+  $("form#register, form#login").on("submit", submitForm);
+  $("form#cats-form").on("submit", updateUserCats);
+  $("#cancelCats").on("click", hideCategories);
   $(".categories-link").on("click", getCategories);
   $(".profile-link").on("click", getProfile);
   $(".logout-link").on("click", logout);
@@ -35,13 +37,23 @@ function showPage() {
 
 function submitForm(event){
   event.preventDefault();
-
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
   this.reset();
 
   return ajaxRequest(method, url, data, authenticationSuccessful);
+}
+
+function updateUserCats(event) {
+  event.preventDefault();
+  var method = $(this).attr("method");
+  var url = "http://localhost:3000/api"+$(this).attr("action")+"/"+localStorage.getItem("userId");
+  var data = $(this).serialize();
+  this.reset();
+  console.log(data);
+
+  return ajaxRequest(method, url, data);
 }
 
 function logout(){
@@ -133,14 +145,19 @@ function getCategories(event) {
 
 function showCategories(data) {
   $('#categoryChoice').fadeIn();
+  $('#cats-form div.row').empty();
   data.categories.forEach(function(category, index){
     var checked = '';
-    console.log($.inArray(category.title, getFaveCats()),getFaveCats(),category.title);
     if ($.inArray(category.title, getFaveCats()) > -1) {
       checked = 'checked';
     }
-    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in"'+checked+' id="cat'+index+'" name="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
-  }) 
+    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in"'+checked+' id="cat'+index+'" name="favourite_categories" value="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
+  })
+}
+
+function hideCategories(event) {
+  event.preventDefault();
+  $('#categoryChoice').fadeOut();
 }
 
 function ajaxRequest(method, url, data, callback) {
