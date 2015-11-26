@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <!-- ################################ LIBRARIES, SCRIPTS, ETC ################### -->
 <head>
-
-
-
 	<meta charset="utf-8">
 	<title>JumbulIt</title>
 
@@ -34,14 +30,9 @@
 	<link rel="stylesheet" type="text/css" href="/styles/main.css">
 
 </head>
-
-
-
 <!-- ############################################################# -->
-
-
 <body>
-
+	<!-- NAVBAR -->
 	<div id="navbar">
 		<nav>
 		  <div class="nav-wrapper">
@@ -65,9 +56,7 @@
 		  </div>
 		</nav>
 	</div>
-
 	<!-- 		    	****************** WELCOME PAGE ******************** -->
-
 	<!-- Registration -->
 	<div class="modal" id="registerModal">
 		<div class="modal-content">
@@ -84,7 +73,6 @@
 			</form>
 		</div>
 	</div>
-
 	<!-- Login -->
 	<div class="modal" id="loginModal">
 		<div class="modal-content">
@@ -98,9 +86,16 @@
 	</div>
 
 	<div id="fullpage">
-		<div class="section"></div>
-		<div class="section"></div>
-		<div class="section"></div>
+		<div class="section" id="home">
+			<p class="wlcm-txt">Welcome to Jumble</p>
+		</div>
+		<div class="section" id="abt-us-sct">
+			<p class="abt-us-ttl">Jumbul is a site where you can procrastinate to your heart's content!</p>
+			<p class="abt-us-txt">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."</p>
+		</div>
+		<!-- MADEBY SCREEN -->
+		<div class="section" id="made-by">
+		</div>
 		<div class="section"></div>
 	</div>
 		<!-- 		    	**************HOMEPAGE************************ -->
@@ -109,16 +104,13 @@
 		<h4>Choose your categories</h4>
 		<form id="cats-form" class="login col s12" method="put" action="/users">
 			<div class="row">
-				
 			</div>
 			<button type="submit" class="btn waves-effect">Save changes</button>
 			<button type="button" id="cancelCats" class="btn waves-effect">Cancel</button>
 		</form>
 	</section>
 
-
 	<section id="newsfeed">
-
 		<script type="text/x-template" id="list-template">
 			<div class="col s12 m4">
 				<div class="card">
@@ -134,7 +126,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div id="<%= _id %>" class="modal modal-fixed-footer">
 				<div class="modal-content">
 					<h4><%= title %></h4>
@@ -147,7 +138,6 @@
 		</script>
 
 		<script type="text/x-template" id="video-template">
-
 			<div class="col s12 m3">
 				<div class="card" id="video-card">
 					<div class="card-image">
@@ -160,24 +150,15 @@
 					</div>
 				</div>
 			</div>
-			
 		</script>
-
 		<div class="row" id="my-list">
 		</div>
-
 		<div class="row" id="video-list">
 		</div>
-
-	</section>		
-
+	</section>
 	<!-- 		    	**************PROFILE PAGE************************ -->
-	
-
 	<section id="profileSection">
 		<script type="text/x-template" id="profile-template">
-
-
 			<div class="widget">
 			  <div class="cover">
 			    <img src="http://www.barrbeaconschool.co.uk/wp-content/uploads/2015/02/glacier-lagoon-iceland-hd-wallpaper_0_0.jpg" />
@@ -187,15 +168,11 @@
 			  <h2><%= user.local.email %></h2>
 			  <h3><%= user.favourite_categories %></h3>
 			</div>
-
 		</script>
-
 		<div class="row">
 			<ul id="my-info">
 			</ul>
 		</div>
-
 	</section>
-
 </body>
 </html>
