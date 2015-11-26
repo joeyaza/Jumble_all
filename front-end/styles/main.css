@@ -42,19 +42,71 @@ nav {
     width: 500px;
 }*/
 
+/*PROFILE PAGE*/
 .user-info-row-1 {
   margin-top: 100px;
 }
 
-/*.profile-pik {
-  padding: 50px;
-}*/
+#profile-pik {
+  width: 400px;
+  margin: 0 100px;
+}
+
 .user-fullname-txt {
   text-decoration: bold;
-  font-size: 40px; 
+  font-size: 40px;
+  font-family: Architext;
+  width: 250px;
+  margin: 0 200px;
 }
 
 .user-info-txt {
   text-decoration: bold;
   font-size: 20px; 
+  font-family: Jolly;
 }
+
+
+/*WELCOME PAGE*/
+.wlcm-txt {
+  font-size: 120px;
+  margin-top: -200px;
+  font-family: Architext;
+}
+
+/*ABOUT US*/
+p.abt-us-ttl {
+  font-family: Jolly;
+  font-size: 30px;
+  width: 500px;
+  margin: 0 400px;
+  padding-bottom: 20px;
+}
+
+p.abt-us-txt {
+  font-family: Jolly;
+  font-size: 20px;
+  width:800px;
+  margin: 0 250px;
+}
+
+/*NAVBAR*/
+#navbar {
+  font-family: Jolly;
+  font-size: 100px;
+  padding: 10px;
+  font-color: green;
+}
+
+
+/*CATEGORY BOX*/
+#categoryChoice {
+  padding-top: 50px;
+  font-family: Jolly;
+/*  color: black;*/
+  background-color: #F0C808;
+}
+
+
+
+

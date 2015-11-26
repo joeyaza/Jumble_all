@@ -42,6 +42,7 @@
 
 <body>
 
+	<!-- NAVBAR -->
 	<div id="navbar">
 		<nav>
 		  <div class="nav-wrapper">
@@ -98,9 +99,38 @@
 	</div>
 
 	<div id="fullpage">
-		<div class="section"></div>
-		<div class="section"></div>
-		<div class="section"></div>
+
+		<div class="section" id="home">
+			<p class="wlcm-txt">Welcome to Jumble</p>
+		</div>
+
+		<div class="section" id="abt-us-sct">
+			<p class="abt-us-ttl">Jumbul is a site where you can procrastinate to your heart's content!</p>
+			<p class="abt-us-txt">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."</p>
+		</div>
+
+
+
+
+		<!-- MADEBY SCREEN -->
+		<div class="section" id="made-by">
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<div class="section"></div>
 	</div>
 		<!-- 		    	**************HOMEPAGE************************ -->
@@ -158,14 +188,14 @@
 
 			<div class="row user-info-row-1">
 				<div class="col s12 m6">
-					<img class="center-align" src=<%= user.local.picture_url %> >
+					<img class="center-align" id="profile-pik" src=<%= user.local.picture_url %> >
 					<p class="user-fullname-txt"> <%= user.local.fullName %></p>
 				</div>
 
 				<div class="col s12 m6">
-					<p class="user-info-txt"> UserName: <%= user.local.username %></p>
-					<p class="user-info-txt"> Email ID: <%= user.local.email %></p>
-					<p class="user-info-txt"> Favourited Categories: <%= user.favourite_categories %></p>
+					<p class="user-info-txt"> <%= user.local.username %></p>
+					<p class="user-info-txt"> <%= user.local.email %></p>
+					<p class="user-info-txt"> Liked Categories: <%= user.favourite_categories %></p>
 				</div>
 			</div>
 
