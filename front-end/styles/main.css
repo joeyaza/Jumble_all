@@ -41,3 +41,20 @@ nav {
     height: 500px;
     width: 500px;
 }*/
+
+.user-info-row-1 {
+  margin-top: 100px;
+}
+
+/*.profile-pik {
+  padding: 50px;
+}*/
+.user-fullname-txt {
+  text-decoration: bold;
+  font-size: 40px; 
+}
+
+.user-info-txt {
+  text-decoration: bold;
+  font-size: 20px; 
+}
