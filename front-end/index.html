@@ -146,8 +146,28 @@
 			</div>
 		</script>
 
+		<script type="text/x-template" id="video-template">
+
+			<div class="col s12 m3">
+				<div class="card">
+					<div class="card-image">
+						<div class="video-container">
+							<iframe width="350" height="200" src="https://www.youtube.com/embed/<%= video_url %>" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="card-content">
+							<p><%= title %></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</script>
+
 		<div class="row">
 			<ul id="my-list"></ul>
+		</div>
+
+		<div class="row" id="video-list">
 		</div>
 
 	</section>		
