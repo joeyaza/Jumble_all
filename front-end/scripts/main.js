@@ -6,7 +6,10 @@ function init(){
     fixedElements: '#navbar',
     anchors: ['landingPage', 'about', 'madeBy']
   });
-  $("form").on("submit", submitForm);
+  $("form#register, form#login").on("submit", submitForm);
+  $("form#cats-form").on("submit", updateUserCats);
+  $("#cancelCats").on("click", hideCategories);
+  $(".categories-link").on("click", getCategories);
   $(".profile-link").on("click", getProfile);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
@@ -34,13 +37,23 @@ function showPage() {
 
 function submitForm(event){
   event.preventDefault();
-
   var method = $(this).attr("method");
   var url    = "http://localhost:3000/api" + $(this).attr("action");
   var data   = $(this).serialize();
   this.reset();
 
   return ajaxRequest(method, url, data, authenticationSuccessful);
+}
+
+function updateUserCats(event) {
+  event.preventDefault();
+  var method = $(this).attr("method");
+  var url = "http://localhost:3000/api"+$(this).attr("action")+"/"+localStorage.getItem("userId");
+  var data = $(this).serialize();
+  this.reset();
+  console.log(data);
+
+  return ajaxRequest(method, url, data);
 }
 
 function logout(){
@@ -85,10 +98,12 @@ function getTitles() {
 
 function showTitles(data) {
   _(data.articles).each(function(article){
-    var underscoreTemplate = _.template($("#list-template").html());
-    var compiledTemplate = underscoreTemplate(article);
-    $("#my-info").append(compiledTemplate);
-    $('.materialboxed').materialbox();
+    if ($.inArray(article.category, getFaveCats())>-1) {
+      var underscoreTemplate = _.template($("#list-template").html());
+      var compiledTemplate = underscoreTemplate(article);
+      $("#my-list").append(compiledTemplate);
+      $('.materialboxed').materialbox();
+    }
   });
 }
 
@@ -103,10 +118,16 @@ function setData(data) {
   localStorage.setItem("user-name", data.user.local.username);
   localStorage.setItem("user-email", data.user.local.email);
   localStorage.setItem("user-pic", data.user.local.picture_url);
+  localStorage.setItem("user-cats", data.user.favourite_categories);
+  localStorage.setItem("user-favs", data.user.favourite_jumbuls);
 }
 
 function getToken() {
   return localStorage.getItem("token");
+}
+
+function getFaveCats() {
+  return localStorage.getItem("user-cats").split(",");
 }
 
 function removeData() {
@@ -116,6 +137,28 @@ function removeData() {
 function setRequestHeader(xhr, settings) {
   var token = getToken();
   if (token) return xhr.setRequestHeader('Authorization','Bearer ' + token);
+}
+
+function getCategories(event) {
+  event.preventDefault();
+  return ajaxRequest("get", "http://localhost:3000/api/categories", null, showCategories);
+}
+
+function showCategories(data) {
+  $('#categoryChoice').fadeIn();
+  $('#cats-form div.row').empty();
+  data.categories.forEach(function(category, index){
+    var checked = '';
+    if ($.inArray(category.title, getFaveCats()) > -1) {
+      checked = 'checked';
+    }
+    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in"'+checked+' id="cat'+index+'" name="favourite_categories" value="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
+  })
+}
+
+function hideCategories(event) {
+  event.preventDefault();
+  $('#categoryChoice').fadeOut();
 }
 
 function ajaxRequest(method, url, data, callback) {

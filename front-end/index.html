@@ -44,24 +44,25 @@
 
 	<div id="navbar">
 		<nav>
-			<div class="nav-wrapper">
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<a href="#" class="brand-logo center">
-					<img src="/images/logo.png" class="logo-image">
-				</a>
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><a href="#landingPage" class="logged-out">Home</a></li>
-					<li><a href="#about" class="logged-out">About</a></li>
-					<li><a href="#madeBy" class="logged-out">Made By</a></li>
-				</ul>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="/">Jumbles</a></li>
-					<li><a href="/" class="profile-link logged-in">Profile</a></li>
-					<li><a href="#registerModal" class="register-link logged-out modal-trigger">Sign up</a></li>
-					<li><a href="#loginModal" class="login-link logged-out modal-trigger">Log In</a></li>
-					<li><a href="/" class="logout-link logged-in">Log Out</a></li>
-				</ul>
-			</div>
+		  <div class="nav-wrapper">
+		  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+		    <a href="#" class="brand-logo center">
+		    	<img src="/images/logo.png" class="logo-image">
+		    </a>
+		    <ul id="nav-mobile-left" class="left hide-on-med-and-down">
+		      <li><a href="#landingPage" class="logged-out">Home</a></li>
+		      <li><a href="#about" class="logged-out">About</a></li>
+		      <li><a href="#madeBy" class="logged-out">Made By</a></li>
+		    </ul>
+		    <ul id="nav-mobile-right" class="right hide-on-med-and-down">
+		    	<li><a href="/" class="categories-link logged-in">Categories</a></li>
+		      <li><a href="/">Jumbles</a></li>
+		      <li><a href="/" class="profile-link logged-in">Profile</a></li>
+		      <li><a href="#registerModal" class="register-link logged-out modal-trigger">Sign up</a></li>
+		      <li><a href="#loginModal" class="login-link logged-out modal-trigger">Log In</a></li>
+		      <li><a href="/" class="logout-link logged-in">Log Out</a></li>
+		    </ul>
+		  </div>
 		</nav>
 	</div>
 
@@ -71,7 +72,7 @@
 	<div class="modal" id="registerModal">
 		<div class="modal-content">
 			<h4>Register</h4>
-			<form class="register col s12" method="post" action="/register">
+			<form id="register" class="col s12" method="post" action="/register">
 				<div class="row">
 					<input type="text" name="username" class="validate" placeholder="Username">
 					<input type="text" name="fullname" class="validate" placeholder="Full name">
@@ -88,20 +89,33 @@
 	<div class="modal" id="loginModal">
 		<div class="modal-content">
 			<h4>Login</h4>
-			<form class="login" method="post" action="/login">
-				<input type="email" name="email" id="login-email" class="form-control" placeholder="Email">
-				<input type="password" name="password" id="login-password" class="form-control"  placeholder="Password">
+			<form id="login" class="col s12" method="post" action="/login">
+				<input type="email" name="email" id="login-email" class="validate" placeholder="Email">
+				<input type="password" name="password" id="login-password" class="validate"  placeholder="Password">
 				<button type="submit" class="btn waves-effect modal-action modal-close">Submit<i class="material-icons right">send</i></button>
 			</form>
 		</div>
 	</div>
 
 	<div id="fullpage">
-		<div class="section">
-
-		</div>
+		<div class="section"></div>
+		<div class="section"></div>
+		<div class="section"></div>
+		<div class="section"></div>
 	</div>
-			<!-- 		    	**************HOMEPAGE************************ -->
+
+		<!-- 		    	**************HOMEPAGE************************ -->
+	
+	<section id="categoryChoice">
+		<h4>Choose your categories</h4>
+		<form id="cats-form" class="login col s12" method="put" action="/users">
+			<div class="row">
+				
+			</div>
+			<button type="submit" class="btn waves-effect">Save changes</button>
+			<button type="button" id="cancelCats" class="btn waves-effect">Cancel</button>
+		</form>
+	</section>
 
 
 		<section id="newsfeed">
