@@ -28,7 +28,7 @@ function addArticles(req, res) {
           var newArticle = new Article();
           newArticle.title = article.webTitle;
           newArticle.article_url = article.webUrl;
-          newArticle.publication_date = article.webPublicationDate;
+          newArticle.created_at = article.webPublicationDate;
           newArticle.category = article.sectionName;
 
           newArticle.save(function(err, article) {

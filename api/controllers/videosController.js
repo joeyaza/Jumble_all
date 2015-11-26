@@ -69,7 +69,7 @@ function addVideos(req, res) {
         newVideo.title = video.snippet.title;
         newVideo.video_url = video.id.videoId;
         newVideo.category = video.category;
-        newVideo.published_at = video.snippet.publishedAt;
+        newVideo.created_at = video.snippet.publishedAt;
         return newVideo.save();
       }));
     })

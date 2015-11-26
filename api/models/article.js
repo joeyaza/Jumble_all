@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var articleSchema = new mongoose.Schema({
   title: String,
   article_url: String,
-  publication_date: Date, 
+  created_at: Date, 
   category: String,
   content: String
 });
