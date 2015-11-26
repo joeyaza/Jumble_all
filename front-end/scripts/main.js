@@ -103,10 +103,16 @@ function setData(data) {
   localStorage.setItem("user-name", data.user.local.username);
   localStorage.setItem("user-email", data.user.local.email);
   localStorage.setItem("user-pic", data.user.local.picture_url);
+  localStorage.setItem("user-cats", data.user.favourite_categories);
+  localStorage.setItem("user-favs", data.user.favourite_jumbuls);
 }
 
 function getToken() {
   return localStorage.getItem("token");
+}
+
+function getCats() {
+  return localStorage.getItem("user-cats");
 }
 
 function removeData() {
@@ -126,7 +132,7 @@ function getCategories(event) {
 function showCategories(data) {
   $('#categoryChoice').fadeIn();
   data.categories.forEach(function(category, index){
-    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in" checked="checked" id="cat'+index+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
+    $('#cats-form div.row').append('<div class="col s3"><input type="checkbox" class="filled-in" id="cat'+index+'" name="'+category.title+'" /><label for="cat'+index+'">'+category.title+'</label></div>')
   }) 
 }
 
