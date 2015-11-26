@@ -51,9 +51,8 @@ function updateUserCats(event) {
   var url = "http://localhost:3000/api"+$(this).attr("action")+"/"+localStorage.getItem("userId");
   var data = $(this).serialize();
   this.reset();
-  console.log(data);
 
-  return ajaxRequest(method, url, data);
+  return ajaxRequest(method, url, data, newUserCats);
 }
 
 function logout(){
@@ -96,6 +95,7 @@ function getTitles() {
 }
 
 function showTitles(data) {
+  $("#my-list").empty();
   _(data.articles).each(function(article){
     if ($.inArray(article.category, getFaveCats())>-1) {
       var underscoreTemplate = _.template($("#list-template").html());
@@ -112,13 +112,19 @@ function authenticationSuccessful(data) {
 }
 
 function setData(data) {
-  localStorage.setItem("token", data.token);
+  if (data.token) localStorage.setItem("token", data.token);
   localStorage.setItem("userId", data.user._id);
   localStorage.setItem("user-name", data.user.local.username);
   localStorage.setItem("user-email", data.user.local.email);
   localStorage.setItem("user-pic", data.user.local.picture_url);
   localStorage.setItem("user-cats", data.user.favourite_categories);
   localStorage.setItem("user-favs", data.user.favourite_jumbuls);
+}
+
+function newUserCats(data) {
+  setData(data);
+  setTimeout(getTitles,500);
+  hideCategories();
 }
 
 function getToken() {
@@ -156,7 +162,7 @@ function showCategories(data) {
 }
 
 function hideCategories(event) {
-  event.preventDefault();
+  if (event) event.preventDefault();
   $('#categoryChoice').fadeOut();
 }
 
