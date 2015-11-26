@@ -77,6 +77,7 @@ function loggedInState(){
   $("#newsfeed").show();
   $("#profileSection").show();
   titles();
+  videos();
 }
 
 
@@ -89,6 +90,28 @@ function loggedOutState(){
 function titles() {
   event.preventDefault();
   return getTitles();
+}
+
+function videos() {
+  event.preventDefault();
+  return getVideos();
+}
+
+function getVideos() {
+  $('html').removeClass('fp-enabled');
+  return ajaxRequest("get", "http://localhost:3000/api/videos", null, showVideos)
+}
+
+function showVideos(data) {
+  $("#video-list").empty();
+  _(data.videos).each(function(video){
+    if ($.inArray(video.category, getFaveCats())>-1) {
+      console.log(video);
+      var underscoreTemplate = _.template($("#video-template").html());
+      var compiledTemplate = underscoreTemplate(video);
+      $("#video-list").append(compiledTemplate);
+    }
+  });
 }
 
 function getTitles() {
@@ -127,6 +150,7 @@ function setData(data) {
 function newUserCats(data) {
   setData(data);
   setTimeout(getTitles,500);
+  setTimeout(getVideos,500);
   hideCategories();
 }
 
