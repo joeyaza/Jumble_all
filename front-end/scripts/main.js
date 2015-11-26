@@ -7,6 +7,7 @@ function init(){
     anchors: ['landingPage', 'about', 'madeBy']
   });
   $("form").on("submit", submitForm);
+  $("categories-link").on("click", getCategories);
   $(".profile-link").on("click", getProfile);
   $(".logout-link").on("click", logout);
   $(".login-link, .register-link").on("click", showPage);
@@ -115,6 +116,10 @@ function removeData() {
 function setRequestHeader(xhr, settings) {
   var token = getToken();
   if (token) return xhr.setRequestHeader('Authorization','Bearer ' + token);
+}
+
+function getCategories(event) {
+  event.preventDefault();
 }
 
 function ajaxRequest(method, url, data, callback) {

@@ -7,6 +7,7 @@ var authenticationsController = require('../controllers/authenticationsControlle
 var articlesController = require('../controllers/articlesController');
 var imagesController = require('../controllers/imagesController');
 var videosController = require('../controllers/videosController');
+var categoriesController = require('../controllers/categoriesController');
 
 var User = require('../models/user');
 
@@ -39,5 +40,11 @@ router.route('/newvideos')
 
 router.route('/videos')
   .get(videosController.videosIndex);
+
+router.route('/categories')
+  .get(categoriesController.categoriesIndex);
+
+router.route('/newcategories')
+  .post(categoriesController.addCategories);
 
 module.exports = router
