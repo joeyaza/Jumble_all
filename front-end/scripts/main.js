@@ -38,7 +38,7 @@ function showPage() {
 function submitForm(event){
   event.preventDefault();
   var method = $(this).attr("method");
-  var url    = "http://localhost:3000/api" + $(this).attr("action");
+  var url    = "http://gentle-waters-2921.herokuapp.com/api" + $(this).attr("action");
   var data   = $(this).serialize();
   this.reset();
 
@@ -48,7 +48,7 @@ function submitForm(event){
 function updateUserCats(event) {
   event.preventDefault();
   var method = $(this).attr("method");
-  var url = "http://localhost:3000/api"+$(this).attr("action")+"/"+localStorage.getItem("userId");
+  var url = "http://gentle-waters-2921.herokuapp.com/api"+$(this).attr("action")+"/"+localStorage.getItem("userId");
   var data = $(this).serialize();
   this.reset();
 
@@ -99,7 +99,7 @@ function videos() {
 
 function getVideos() {
   $('html').removeClass('fp-enabled');
-  return ajaxRequest("get", "http://localhost:3000/api/videos", null, showVideos)
+  return ajaxRequest("get", "http://gentle-waters-2921.herokuapp.com/api/videos", null, showVideos)
 }
 
 function showVideos(data) {
@@ -115,7 +115,7 @@ function showVideos(data) {
 
 function getTitles() {
   $('html').removeClass('fp-enabled');
-  return ajaxRequest("get", "http://localhost:3000/api/articles", null, showTitles)
+  return ajaxRequest("get", "http://gentle-waters-2921.herokuapp.com/api/articles", null, showTitles)
 }
 
 function showTitles(data) {
@@ -172,7 +172,7 @@ function setRequestHeader(xhr, settings) {
 
 function getCategories(event) {
   event.preventDefault();
-  return ajaxRequest("get", "http://localhost:3000/api/categories", null, showCategories);
+  return ajaxRequest("get", "http://gentle-waters-2921.herokuapp.com/api/categories", null, showCategories);
 }
 
 function showCategories(data) {
@@ -210,7 +210,7 @@ function getProfile(event){
   event.preventDefault();
   $('#newsfeed').hide();
   var userId = localStorage.getItem("userId");
-  return ajaxRequest("get", "http://localhost:3000/api/users/" + userId, null, showProfile)
+  return ajaxRequest("get", "http://gentle-waters-2921.herokuapp.com/api/users/" + userId, null, showProfile)
 }
 
 function showProfile(data){
