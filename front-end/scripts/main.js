@@ -2,7 +2,7 @@ $( init);
 
 function init(){
   $('#fullpage').fullpage({
-    sectionsColor: ['#A5D8FF', '#758ECD', '#D5C6E0', '#C5979D'],
+    sectionsColor: ['#A5D8FF', '#758ECD', '#D5C6E0'],
     fixedElements: '#navbar',
     anchors: ['landingPage', 'about', 'madeBy']
   });
