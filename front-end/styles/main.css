@@ -214,10 +214,17 @@ p.abt-us-ttl {
 }
 
 p.abt-us-txt {
-  font-family: Jolly;
-  font-size: 20px;
+  font-family: 'Coming Soon', cursive;
+  text-shadow: 1px 1px white;
+  font-size: 30px;
   width:800px;
-  margin: 0 250px;
+  margin: 100px auto 0 auto;
+}
+
+.about-img {
+  margin-top: 40px;
+  height: 300px;
+  margin: 40px;
 }
 
 /*NAVBAR*/

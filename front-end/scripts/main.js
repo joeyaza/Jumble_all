@@ -120,13 +120,18 @@ function getTitles() {
 
 function showTitles(data) {
   $("#my-list").empty();
+  var newsArray = [];
   _(data.articles).each(function(article){
     if ($.inArray(article.category, getFaveCats())>-1) {
-      var underscoreTemplate = _.template($("#list-template").html());
-      var compiledTemplate = underscoreTemplate(article);
-      $("#my-list").append(compiledTemplate);
-      $('.materialboxed').materialbox();
+      newsArray.push(article);
     }
+  })
+  newsArray = shuffle(newsArray);
+  newsArray.forEach(function(article) {
+    var underscoreTemplate = _.template($("#list-template").html());
+    var compiledTemplate = underscoreTemplate(article);
+    $("#my-list").append(compiledTemplate);
+    $('.materialboxed').materialbox();
   });
   $('.modal-trigger').leanModal({dismissable: true, opacity: 0.5});
 }
@@ -171,7 +176,7 @@ function setRequestHeader(xhr, settings) {
 }
 
 function getCategories(event) {
-  event.preventDefault();
+  if (event) event.preventDefault();
   return ajaxRequest("get", "https://gentle-waters-2921.herokuapp.com/api/categories", null, showCategories);
 }
 
@@ -231,4 +236,19 @@ function getJumbles(){
   event.preventDefault();
   $('#profileSection').hide();
   $('#newsfeed').show();
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
 }
